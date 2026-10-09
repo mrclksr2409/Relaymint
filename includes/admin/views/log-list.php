@@ -12,11 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="wrap relaymint-wrap">
-	<h1 class="wp-heading-inline"><?php esc_html_e( 'Email Log', 'relaymint' ); ?></h1>
-	<?php if ( $table->has_items() ) : ?>
-		<a class="page-title-action relaymint-confirm" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_delete_logs' ), 'relaymint_delete_logs' ) ); ?>"><?php esc_html_e( 'Delete all', 'relaymint' ); ?></a>
-	<?php endif; ?>
-	<hr class="wp-header-end" />
+	<?php Relaymint_Admin::header( __( 'Email Log', 'relaymint' ) ); ?>
 
 	<?php if ( ! Relaymint_Logger::is_enabled() ) : ?>
 		<div class="notice notice-info inline">
@@ -27,7 +23,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	<?php endif; ?>
 
-	<?php $table->views(); ?>
+	<div class="wpb-toolbar">
+		<?php $table->views(); ?>
+		<?php if ( $table->has_items() ) : ?>
+			<div class="wpb-toolbar__end">
+				<a class="button wpb-button-danger" data-wpb-confirm="<?php esc_attr_e( 'Are you sure?', 'relaymint' ); ?>" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_delete_logs' ), 'relaymint_delete_logs' ) ); ?>"><?php esc_html_e( 'Delete all', 'relaymint' ); ?></a>
+			</div>
+		<?php endif; ?>
+	</div>
 	<form method="get">
 		<input type="hidden" name="page" value="<?php echo esc_attr( Relaymint_Admin::SLUG . '-log' ); ?>" />
 		<?php

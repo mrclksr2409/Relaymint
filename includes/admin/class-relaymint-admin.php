@@ -41,6 +41,13 @@ class Relaymint_Admin {
 		add_action( 'admin_post_relaymint_run_queue', array( $this, 'handle_run_queue' ) );
 
 		add_action( 'admin_notices', array( $this, 'notices' ) );
+
+		// Shared admin design (bundled WP-Backend UI) on all Relaymint screens.
+		wpb_admin_ui_register(
+			array(
+				'pages' => array( self::SLUG, self::SLUG . '-log', self::SLUG . '-tools' ),
+			)
+		);
 	}
 
 	/**
@@ -83,8 +90,11 @@ class Relaymint_Admin {
 		if ( false === strpos( $hook, self::SLUG ) ) {
 			return;
 		}
-		wp_enqueue_style( 'relaymint-admin', RELAYMINT_URL . 'assets/css/admin.css', array(), RELAYMINT_VERSION );
-		wp_enqueue_script( 'relaymint-admin', RELAYMINT_URL . 'assets/js/admin.js', array(), RELAYMINT_VERSION, true );
+		// Registers the 'wpb-admin-ui' handles (no-op if the library already enqueued them).
+		WPB_Admin_UI::enqueue_assets();
+		wp_enqueue_style( 'relaymint-admin', RELAYMINT_URL . 'assets/css/admin.css', array( WPB_Admin_UI::HANDLE ), RELAYMINT_VERSION );
+		// Depends on the library script for data-wpb-confirm on destructive links.
+		wp_enqueue_script( 'relaymint-admin', RELAYMINT_URL . 'assets/js/admin.js', array( WPB_Admin_UI::HANDLE ), RELAYMINT_VERSION, true );
 		wp_localize_script(
 			'relaymint-admin',
 			'relaymintAdmin',
@@ -119,6 +129,46 @@ class Relaymint_Admin {
 				'tab'  => 'connections',
 				'edit' => $id,
 			)
+		);
+	}
+
+	/**
+	 * Print the shared page header (WP-Backend UI).
+	 *
+	 * @param string $title   Page title.
+	 * @param array  $actions Header buttons, see WPB_Admin_UI::header().
+	 */
+	public static function header( $title, array $actions = array() ) {
+		WPB_Admin_UI::header(
+			array(
+				'title'    => $title,
+				'subtitle' => __( 'SMTP delivery, smart routing and email log', 'relaymint' ),
+				'icon'     => 'dashicons-email-alt',
+				'version'  => RELAYMINT_VERSION,
+				'actions'  => $actions,
+			)
+		);
+	}
+
+	/**
+	 * Status badge of a log entry.
+	 *
+	 * @param string $status Log status.
+	 * @return string Escaped HTML.
+	 */
+	public static function status_badge( $status ) {
+		$statuses = Relaymint_Logger::statuses();
+		$variants = array(
+			Relaymint_Logger::STATUS_SENT    => 'success',
+			Relaymint_Logger::STATUS_FAILED  => 'error',
+			Relaymint_Logger::STATUS_QUEUED  => 'warning',
+			Relaymint_Logger::STATUS_SENDING => 'warning',
+			Relaymint_Logger::STATUS_BLOCKED => 'neutral',
+		);
+		return WPB_Admin_UI::badge(
+			isset( $statuses[ $status ] ) ? $statuses[ $status ] : $status,
+			isset( $variants[ $status ] ) ? $variants[ $status ] : 'neutral',
+			true
 		);
 	}
 
@@ -217,17 +267,15 @@ class Relaymint_Admin {
 		}
 
 		echo '<div class="wrap relaymint-wrap">';
-		echo '<h1>' . esc_html__( 'Relaymint Settings', 'relaymint' ) . '</h1>';
-		echo '<nav class="nav-tab-wrapper">';
-		foreach ( $tabs as $key => $label ) {
-			printf(
-				'<a href="%1$s" class="nav-tab%2$s">%3$s</a>',
-				esc_url( self::url( '', array( 'tab' => $key ) ) ),
-				$key === $tab ? ' nav-tab-active' : '',
-				esc_html( $label )
-			);
-		}
-		echo '</nav>';
+		self::header( __( 'Relaymint Settings', 'relaymint' ) );
+		WPB_Admin_UI::tabs(
+			$tabs,
+			$tab,
+			array(
+				'base_url'  => self::url(),
+				'query_arg' => 'tab',
+			)
+		);
 
 		include RELAYMINT_DIR . 'includes/admin/views/settings-' . $tab . '.php';
 

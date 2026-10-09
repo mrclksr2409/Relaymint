@@ -204,11 +204,9 @@ class Relaymint_Log_List_Table extends WP_List_Table {
 	 * @return string
 	 */
 	protected function column_status( $item ) {
-		$statuses = Relaymint_Logger::statuses();
-		$label    = isset( $statuses[ $item->status ] ) ? $statuses[ $item->status ] : $item->status;
-		$out      = sprintf( '<span class="relaymint-status relaymint-status-%1$s">%2$s</span>', esc_attr( $item->status ), esc_html( $label ) );
+		$out = Relaymint_Admin::status_badge( $item->status );
 		if ( '' !== $item->error ) {
-			$out .= '<br /><small class="relaymint-error-text">' . esc_html( wp_trim_words( $item->error, 15 ) ) . '</small>';
+			$out .= '<br /><small class="wpb-text-error">' . esc_html( wp_trim_words( $item->error, 15 ) ) . '</small>';
 		}
 		return $out;
 	}

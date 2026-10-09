@@ -867,3 +867,7 @@ msgstr ""
 #, php-format
 msgid "The regular expression %s is invalid and was skipped."
 msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:145
+msgid "SMTP delivery, smart routing and email log"
+msgstr ""

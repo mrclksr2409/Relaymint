@@ -22,13 +22,7 @@
 		return tpl.content.firstElementChild.cloneNode( true );
 	}
 
-	/* Confirmation for destructive links. */
-	document.addEventListener( 'click', function ( event ) {
-		var link = event.target.closest( '.relaymint-confirm' );
-		if ( link && ! window.confirm( i18n.confirmDelete || 'Are you sure?' ) ) {
-			event.preventDefault();
-		}
-	} );
+	/* Confirmation for destructive links: handled by WP-Backend UI (data-wpb-confirm). */
 
 	/* Toggle dependent settings. */
 	function initToggles() {

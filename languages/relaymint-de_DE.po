@@ -869,3 +869,7 @@ msgstr "passt nicht auf Regex"
 #, php-format
 msgid "The regular expression %s is invalid and was skipped."
 msgstr "Der reguläre Ausdruck %s ist ungültig und wurde übersprungen."
+
+#: includes/admin/class-relaymint-admin.php:145
+msgid "SMTP delivery, smart routing and email log"
+msgstr "SMTP-Versand, Smart Routing und E-Mail-Log"

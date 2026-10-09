@@ -3,7 +3,7 @@
  * Plugin Name:       Relaymint
  * Plugin URI:        https://github.com/mrclksr2409/Relaymint
  * Description:       Reliable SMTP delivery for WordPress with email logging, smart routing, background sending and rate limiting.
- * Version:           0.1.0
+ * Version:           0.2.0
  * Requires at least: 6.9
  * Requires PHP:      7.4
  * Author:            Marcel Kaiser
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'RELAYMINT_VERSION', '0.1.0' );
+define( 'RELAYMINT_VERSION', '0.2.0' );
 define( 'RELAYMINT_DB_VERSION', '1' );
 define( 'RELAYMINT_FILE', __FILE__ );
 define( 'RELAYMINT_DIR', plugin_dir_path( __FILE__ ) );
@@ -44,6 +44,12 @@ $relaymint_update_checker->getVcsApi()->enableReleaseAssets( '/\.zip($|[?&#])/i'
  * The library resolves version conflicts itself if another plugin bundles it too.
  */
 require_once RELAYMINT_DIR . 'libraries/action-scheduler/action-scheduler.php';
+
+/**
+ * WP-Backend UI — shared admin design system.
+ * The loader resolves version conflicts itself if another plugin bundles it too.
+ */
+require_once RELAYMINT_DIR . 'libraries/wp-backend-ui/wp-backend-ui.php';
 
 require_once RELAYMINT_DIR . 'includes/class-relaymint-secrets.php';
 require_once RELAYMINT_DIR . 'includes/class-relaymint-options.php';

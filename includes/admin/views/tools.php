@@ -16,37 +16,32 @@ $relaymint_debug       = array_reverse( Relaymint_Debug_Log::get() );
 $relaymint_user        = wp_get_current_user();
 ?>
 <div class="wrap relaymint-wrap">
-	<h1><?php esc_html_e( 'Relaymint Tools', 'relaymint' ); ?></h1>
+	<?php Relaymint_Admin::header( __( 'Relaymint Tools', 'relaymint' ) ); ?>
 
-	<h2><?php esc_html_e( 'Send a Test Email', 'relaymint' ); ?></h2>
+	<?php WPB_Admin_UI::card_start( array( 'title' => __( 'Send a Test Email', 'relaymint' ) ) ); ?>
 
 	<?php if ( is_array( $test_result ) ) : ?>
-		<?php if ( $test_result['success'] ) : ?>
-			<div class="notice notice-success inline">
-				<p>
-					<?php
-					echo esc_html(
-						sprintf(
-							/* translators: %s: email address */
-							__( 'The test email was sent to %s.', 'relaymint' ),
-							$test_result['to']
-						)
-					);
-					?>
-				</p>
-			</div>
-		<?php else : ?>
-			<div class="notice notice-error inline">
-				<p><strong><?php esc_html_e( 'The test email could not be sent.', 'relaymint' ); ?></strong></p>
-				<?php if ( '' !== $test_result['error'] ) : ?>
-					<p><?php echo esc_html( $test_result['error'] ); ?></p>
-				<?php endif; ?>
-			</div>
-		<?php endif; ?>
+		<?php
+		if ( $test_result['success'] ) {
+			$relaymint_alert = WPB_Admin_UI::alert(
+				sprintf(
+					/* translators: %s: email address */
+					__( 'The test email was sent to %s.', 'relaymint' ),
+					$test_result['to']
+				),
+				'success'
+			);
+		} elseif ( '' !== $test_result['error'] ) {
+			$relaymint_alert = WPB_Admin_UI::alert( $test_result['error'], 'error', __( 'The test email could not be sent.', 'relaymint' ) );
+		} else {
+			$relaymint_alert = WPB_Admin_UI::alert( __( 'The test email could not be sent.', 'relaymint' ), 'error' );
+		}
+		echo $relaymint_alert; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by WPB_Admin_UI::alert().
+		?>
 		<?php if ( '' !== $test_result['transcript'] ) : ?>
 			<details <?php echo $test_result['success'] ? '' : 'open'; ?>>
 				<summary><?php esc_html_e( 'SMTP debug output', 'relaymint' ); ?></summary>
-				<pre class="relaymint-pre"><?php echo esc_html( $test_result['transcript'] ); ?></pre>
+				<pre class="wpb-code"><?php echo esc_html( $test_result['transcript'] ); ?></pre>
 			</details>
 		<?php endif; ?>
 	<?php endif; ?>
@@ -77,29 +72,38 @@ $relaymint_user        = wp_get_current_user();
 		<?php submit_button( __( 'Send Test Email', 'relaymint' ) ); ?>
 	</form>
 
-	<h2 id="debug-log"><?php esc_html_e( 'Debug Log', 'relaymint' ); ?></h2>
-	<?php if ( ! Relaymint_Debug_Log::is_enabled() ) : ?>
-		<p class="description">
-			<?php esc_html_e( 'Only errors are recorded. Enable the debug log in the Misc settings to record the full SMTP conversation.', 'relaymint' ); ?>
-		</p>
-	<?php endif; ?>
+	<?php WPB_Admin_UI::card_end(); ?>
 
-	<?php if ( ! $relaymint_debug ) : ?>
-		<p><?php esc_html_e( 'The debug log is empty.', 'relaymint' ); ?></p>
-	<?php else : ?>
-		<p>
-			<a class="button relaymint-confirm" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_clear_debug_log' ), 'relaymint_clear_debug_log' ) ); ?>"><?php esc_html_e( 'Clear debug log', 'relaymint' ); ?></a>
-		</p>
-		<div class="relaymint-debug-log">
-			<?php foreach ( $relaymint_debug as $relaymint_entry ) : ?>
-				<div class="relaymint-debug-entry relaymint-debug-<?php echo esc_attr( $relaymint_entry['level'] ); ?>">
-					<div class="relaymint-debug-meta">
-						<?php echo esc_html( wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) . ':s', (int) $relaymint_entry['time'] ) ); ?>
-						&middot; <?php echo esc_html( strtoupper( $relaymint_entry['level'] ) ); ?>
-					</div>
-					<pre class="relaymint-pre"><?php echo esc_html( $relaymint_entry['message'] ); ?></pre>
+	<section class="wpb-card" id="debug-log">
+		<header class="wpb-card__header">
+			<div>
+				<h2 class="wpb-card__title"><?php esc_html_e( 'Debug Log', 'relaymint' ); ?></h2>
+				<?php if ( ! Relaymint_Debug_Log::is_enabled() ) : ?>
+					<p class="wpb-card__description"><?php esc_html_e( 'Only errors are recorded. Enable the debug log in the Misc settings to record the full SMTP conversation.', 'relaymint' ); ?></p>
+				<?php endif; ?>
+			</div>
+			<?php if ( $relaymint_debug ) : ?>
+				<div class="wpb-row">
+					<a class="button" data-wpb-confirm="<?php esc_attr_e( 'Are you sure?', 'relaymint' ); ?>" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_clear_debug_log' ), 'relaymint_clear_debug_log' ) ); ?>"><?php esc_html_e( 'Clear debug log', 'relaymint' ); ?></a>
 				</div>
-			<?php endforeach; ?>
+			<?php endif; ?>
+		</header>
+		<div class="wpb-card__body">
+			<?php if ( ! $relaymint_debug ) : ?>
+				<p class="wpb-muted"><?php esc_html_e( 'The debug log is empty.', 'relaymint' ); ?></p>
+			<?php else : ?>
+				<div class="relaymint-debug-log">
+					<?php foreach ( $relaymint_debug as $relaymint_entry ) : ?>
+						<div class="relaymint-debug-entry relaymint-debug-<?php echo esc_attr( $relaymint_entry['level'] ); ?>">
+							<div class="relaymint-debug-meta">
+								<?php echo esc_html( wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ) . ':s', (int) $relaymint_entry['time'] ) ); ?>
+								&middot; <?php echo esc_html( strtoupper( $relaymint_entry['level'] ) ); ?>
+							</div>
+							<pre class="wpb-code"><?php echo esc_html( $relaymint_entry['message'] ); ?></pre>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			<?php endif; ?>
 		</div>
-	<?php endif; ?>
+	</section>
 </div>

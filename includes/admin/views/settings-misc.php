@@ -23,24 +23,26 @@ $relaymint_pending = Relaymint_Queue::count_pending();
 			<td>
 				<label><input type="checkbox" class="relaymint-toggle" data-target=".relaymint-domain-check" name="misc[domain_check]" value="1" <?php checked( $relaymint_misc['domain_check'] ); ?> /> <?php esc_html_e( 'Enable domain check', 'relaymint' ); ?></label>
 				<p class="description"><?php esc_html_e( 'Only use the SMTP settings when the site runs on one of the allowed domains. Useful for staging copies or migrated sites.', 'relaymint' ); ?></p>
-				<div class="relaymint-domain-check relaymint-sub">
-					<p>
-						<label for="relaymint-allowed-domains"><?php esc_html_e( 'Allowed domains (comma separated)', 'relaymint' ); ?></label><br />
-						<input type="text" id="relaymint-allowed-domains" class="large-text" name="misc[domain_check_allowed]" value="<?php echo esc_attr( $relaymint_misc['domain_check_allowed'] ); ?>" placeholder="<?php echo esc_attr( Relaymint_Domain_Check::site_domain() ); ?>" />
-					</p>
-					<p class="description">
-						<?php
-						echo esc_html(
-							sprintf(
-								/* translators: %s: site domain */
-								__( 'Current site domain: %s', 'relaymint' ),
-								Relaymint_Domain_Check::site_domain()
-							)
-						);
-						?>
-					</p>
-					<p><label><input type="checkbox" name="misc[domain_check_block_all]" value="1" <?php checked( $relaymint_misc['domain_check_block_all'] ); ?> /> <?php esc_html_e( 'Block all emails when the domain does not match', 'relaymint' ); ?></label></p>
-					<p class="description"><?php esc_html_e( 'Without this option, emails are sent with the default PHP mailer instead of SMTP on non-matching domains.', 'relaymint' ); ?></p>
+				<div class="relaymint-domain-check relaymint-sub wpb-card wpb-card--muted">
+					<div class="wpb-card__body">
+						<p>
+							<label for="relaymint-allowed-domains"><?php esc_html_e( 'Allowed domains (comma separated)', 'relaymint' ); ?></label><br />
+							<input type="text" id="relaymint-allowed-domains" class="large-text" name="misc[domain_check_allowed]" value="<?php echo esc_attr( $relaymint_misc['domain_check_allowed'] ); ?>" placeholder="<?php echo esc_attr( Relaymint_Domain_Check::site_domain() ); ?>" />
+						</p>
+						<p class="description">
+							<?php
+							echo esc_html(
+								sprintf(
+									/* translators: %s: site domain */
+									__( 'Current site domain: %s', 'relaymint' ),
+									Relaymint_Domain_Check::site_domain()
+								)
+							);
+							?>
+						</p>
+						<p><label><input type="checkbox" name="misc[domain_check_block_all]" value="1" <?php checked( $relaymint_misc['domain_check_block_all'] ); ?> /> <?php esc_html_e( 'Block all emails when the domain does not match', 'relaymint' ); ?></label></p>
+						<p class="description"><?php esc_html_e( 'Without this option, emails are sent with the default PHP mailer instead of SMTP on non-matching domains.', 'relaymint' ); ?></p>
+					</div>
 				</div>
 			</td>
 		</tr>
@@ -94,22 +96,24 @@ $relaymint_pending = Relaymint_Queue::count_pending();
 			<td>
 				<label><input type="checkbox" class="relaymint-toggle" data-target=".relaymint-rate-limits" name="misc[rate_limit]" value="1" <?php checked( $relaymint_misc['rate_limit'] ); ?> /> <?php esc_html_e( 'Limit the number of emails sent', 'relaymint' ); ?></label>
 				<p class="description"><?php esc_html_e( 'Emails above the limit stay in the queue and are sent as soon as the limit allows. Leave a field empty or 0 for no limit.', 'relaymint' ); ?></p>
-				<div class="relaymint-rate-limits relaymint-sub">
-					<?php
-					foreach ( array(
-						'minute' => __( 'Per minute', 'relaymint' ),
-						'hour'   => __( 'Per hour', 'relaymint' ),
-						'day'    => __( 'Per day', 'relaymint' ),
-						'week'   => __( 'Per week', 'relaymint' ),
-					) as $relaymint_period => $relaymint_label ) :
-						?>
-						<p>
-							<label>
-								<span class="relaymint-rate-label"><?php echo esc_html( $relaymint_label ); ?></span>
-								<input type="number" min="0" class="small-text" name="misc[rate_limit_<?php echo esc_attr( $relaymint_period ); ?>]" value="<?php echo esc_attr( $relaymint_misc[ 'rate_limit_' . $relaymint_period ] ? $relaymint_misc[ 'rate_limit_' . $relaymint_period ] : '' ); ?>" />
-							</label>
-						</p>
-					<?php endforeach; ?>
+				<div class="relaymint-rate-limits relaymint-sub wpb-card wpb-card--muted">
+					<div class="wpb-card__body">
+						<?php
+						foreach ( array(
+							'minute' => __( 'Per minute', 'relaymint' ),
+							'hour'   => __( 'Per hour', 'relaymint' ),
+							'day'    => __( 'Per day', 'relaymint' ),
+							'week'   => __( 'Per week', 'relaymint' ),
+						) as $relaymint_period => $relaymint_label ) :
+							?>
+							<p>
+								<label>
+									<span class="relaymint-rate-label"><?php echo esc_html( $relaymint_label ); ?></span>
+									<input type="number" min="0" class="small-text" name="misc[rate_limit_<?php echo esc_attr( $relaymint_period ); ?>]" value="<?php echo esc_attr( $relaymint_misc[ 'rate_limit_' . $relaymint_period ] ? $relaymint_misc[ 'rate_limit_' . $relaymint_period ] : '' ); ?>" />
+								</label>
+							</p>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			</td>
 		</tr>

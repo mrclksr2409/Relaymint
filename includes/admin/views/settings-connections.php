@@ -71,7 +71,7 @@ endif;
 				<td>
 					<a href="<?php echo esc_url( Relaymint_Admin::connection_url( $relaymint_cid ) ); ?>"><?php esc_html_e( 'Edit', 'relaymint' ); ?></a>
 					|
-					<a class="relaymint-confirm relaymint-delete" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_delete_connection&id=' . rawurlencode( $relaymint_cid ) ), 'relaymint_delete_connection_' . $relaymint_cid ) ); ?>"><?php esc_html_e( 'Delete', 'relaymint' ); ?></a>
+					<a class="wpb-link-danger" data-wpb-confirm="<?php esc_attr_e( 'Are you sure?', 'relaymint' ); ?>" href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=relaymint_delete_connection&id=' . rawurlencode( $relaymint_cid ) ), 'relaymint_delete_connection_' . $relaymint_cid ) ); ?>"><?php esc_html_e( 'Delete', 'relaymint' ); ?></a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

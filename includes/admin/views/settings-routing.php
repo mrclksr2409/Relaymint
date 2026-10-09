@@ -66,8 +66,8 @@ $relaymint_group = static function ( array $group ) use ( $relaymint_condition )
  */
 $relaymint_route = static function ( array $route ) use ( $relaymint_group, $relaymint_additional ) {
 	?>
-	<div class="relaymint-route">
-		<div class="relaymint-route-header">
+	<div class="relaymint-route wpb-card">
+		<div class="relaymint-route-header wpb-card__header">
 			<label class="relaymint-route-enabled"><input type="checkbox" data-name="enabled" value="1" <?php checked( ! empty( $route['enabled'] ) ); ?> /> <?php esc_html_e( 'Enabled', 'relaymint' ); ?></label>
 			<label>
 				<?php esc_html_e( 'Send via', 'relaymint' ); ?>
@@ -80,18 +80,20 @@ $relaymint_route = static function ( array $route ) use ( $relaymint_group, $rel
 			<span class="relaymint-route-actions">
 				<button type="button" class="button-link relaymint-move-up" aria-label="<?php esc_attr_e( 'Move up', 'relaymint' ); ?>"><span class="dashicons dashicons-arrow-up-alt2"></span></button>
 				<button type="button" class="button-link relaymint-move-down" aria-label="<?php esc_attr_e( 'Move down', 'relaymint' ); ?>"><span class="dashicons dashicons-arrow-down-alt2"></span></button>
-				<button type="button" class="button-link relaymint-remove-route relaymint-delete"><?php esc_html_e( 'Remove route', 'relaymint' ); ?></button>
+				<button type="button" class="button-link relaymint-remove-route wpb-link-danger"><?php esc_html_e( 'Remove route', 'relaymint' ); ?></button>
 			</span>
 		</div>
-		<p class="relaymint-route-if"><?php esc_html_e( 'if the following conditions match:', 'relaymint' ); ?></p>
-		<div class="relaymint-groups">
-			<?php
-			foreach ( $route['groups'] as $group ) {
-				$relaymint_group( $group );
-			}
-			?>
+		<div class="wpb-card__body">
+			<p class="relaymint-route-if"><?php esc_html_e( 'if the following conditions match:', 'relaymint' ); ?></p>
+			<div class="relaymint-groups">
+				<?php
+				foreach ( $route['groups'] as $group ) {
+					$relaymint_group( $group );
+				}
+				?>
+			</div>
+			<button type="button" class="button relaymint-add-group"><?php esc_html_e( '+ Add condition group (or)', 'relaymint' ); ?></button>
 		</div>
-		<button type="button" class="button relaymint-add-group"><?php esc_html_e( '+ Add condition group (or)', 'relaymint' ); ?></button>
 	</div>
 	<?php
 };

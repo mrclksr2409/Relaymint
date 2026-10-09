@@ -1,22 +1,22 @@
-/* Relaymint admin styles. */
+/*
+ * Relaymint admin styles.
+ *
+ * Colors, borders, radii, shadows, tabs, badges and code blocks come from the
+ * bundled WP-Backend UI (libraries/wp-backend-ui). This file only holds layout
+ * that is unique to Relaymint; any remaining color uses the --wpb-* tokens.
+ */
 
-.relaymint-wrap .nav-tab-wrapper {
-	margin-bottom: 1em;
+.relaymint-wrap [hidden] {
+	display: none !important;
+}
+
+/* Settings */
+.wpb-admin .wrap .description.relaymint-locked {
+	color: var(--wpb-warning);
 }
 
 .relaymint-sub {
-	margin-top: 0.75em;
-	padding: 0.25em 1em;
-	border-left: 3px solid #dcdcde;
-}
-
-.relaymint-locked {
-	color: #996800;
-}
-
-.relaymint-delete,
-.relaymint-delete:hover {
-	color: #b32d2e;
+	margin: var(--wpb-space-3) 0 0;
 }
 
 .relaymint-rate-label {
@@ -25,20 +25,9 @@
 }
 
 /* Smart Routing */
-.relaymint-route {
-	background: #fff;
-	border: 1px solid #c3c4c7;
-	border-radius: 4px;
-	margin: 0 0 1em;
-	padding: 1em;
-	max-width: 960px;
-}
-
 .relaymint-route-header {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1em;
 	align-items: center;
+	gap: var(--wpb-space-4);
 }
 
 .relaymint-route-actions {
@@ -50,17 +39,17 @@
 }
 
 .relaymint-route-if {
-	margin: 0.75em 0 0.5em;
-	color: #646970;
+	margin: 0 0 var(--wpb-space-2);
+	color: var(--wpb-text-muted);
 }
 
 .relaymint-group {
-	background: #f6f7f7;
-	border: 1px solid #dcdcde;
-	border-radius: 3px;
-	padding: 0.75em;
-	margin-bottom: 1.75em;
 	position: relative;
+	margin-bottom: 1.75em;
+	padding: var(--wpb-space-3);
+	border: 1px solid var(--wpb-border);
+	border-radius: var(--wpb-radius-sm);
+	background: var(--wpb-surface-muted);
 }
 
 .relaymint-or-label {
@@ -71,7 +60,7 @@
 	text-transform: uppercase;
 	font-size: 11px;
 	font-weight: 600;
-	color: #646970;
+	color: var(--wpb-text-muted);
 }
 
 .relaymint-group:last-child .relaymint-or-label {
@@ -81,103 +70,41 @@
 .relaymint-condition {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.5em;
+	gap: var(--wpb-space-2);
 	align-items: center;
-	margin-bottom: 0.5em;
+	margin-bottom: var(--wpb-space-2);
 }
 
 .relaymint-condition .regular-text {
 	flex: 1 1 200px;
 }
 
-/* Email log */
-.relaymint-status {
-	display: inline-block;
-	padding: 2px 8px;
-	border-radius: 10px;
-	font-size: 12px;
-	background: #dcdcde;
-	color: #1d2327;
-}
-
-.relaymint-status-sent {
-	background: #d1e7dd;
-	color: #0a3622;
-}
-
-.relaymint-status-failed {
-	background: #f8d7da;
-	color: #58151c;
-}
-
-.relaymint-status-queued,
-.relaymint-status-sending {
-	background: #fff3cd;
-	color: #664d03;
-}
-
-.relaymint-status-blocked {
-	background: #e2e3e5;
-	color: #41464b;
-}
-
-.relaymint-error-text {
-	color: #b32d2e;
-}
-
-.relaymint-entry {
-	max-width: 960px;
-}
-
-.relaymint-entry th {
-	width: 160px;
-	font-weight: 600;
-}
-
-.relaymint-entry td {
-	word-break: break-word;
-}
-
-.relaymint-pre {
-	background: #f6f7f7;
-	border: 1px solid #dcdcde;
-	padding: 1em;
-	max-width: 960px;
-	max-height: 500px;
-	overflow: auto;
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
+/* Email log: sandboxed HTML preview */
 .relaymint-preview {
+	display: block;
 	width: 100%;
-	max-width: 960px;
 	height: 500px;
-	background: #fff;
-	border: 1px solid #dcdcde;
+	border: 1px solid var(--wpb-border);
+	border-radius: var(--wpb-radius-sm);
+	background: var(--wpb-surface);
 }
 
 /* Debug log */
 .relaymint-debug-entry {
-	margin-bottom: 1em;
+	margin-bottom: var(--wpb-space-4);
 }
 
 .relaymint-debug-meta {
-	font-size: 12px;
-	color: #646970;
 	margin-bottom: 2px;
+	font-size: 12px;
+	color: var(--wpb-text-muted);
 }
 
 .relaymint-debug-error .relaymint-debug-meta {
-	color: #b32d2e;
+	color: var(--wpb-error);
 	font-weight: 600;
 }
 
-.relaymint-debug-entry .relaymint-pre {
-	margin: 0;
+.relaymint-debug-entry .wpb-code {
 	max-height: 300px;
-}
-
-.relaymint-wrap [hidden] {
-	display: none !important;
 }

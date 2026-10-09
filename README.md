@@ -23,6 +23,7 @@ Relaymint replaces the default PHP `mail()` transport of WordPress with an authe
 - **Optimize email sending** — emails are queued and sent in the background via the bundled [Action Scheduler](https://actionscheduler.org/). Attachments are copied to a protected directory until the email is sent.
 - **Email rate limiting** — max. emails per minute / hour / day / week; emails above the limit wait in the queue.
 - **Test email** — send a test via any connection and see the full SMTP debug output.
+- **Unified admin design** — all Relaymint screens use the bundled WP-Backend UI design system shared by our plugins (page header, cards, badges, tabs).
 - German translation included.
 
 ## Requirements
@@ -30,6 +31,7 @@ Relaymint replaces the default PHP `mail()` transport of WordPress with an authe
 - WordPress 6.9 or higher (required by the bundled Action Scheduler 4.2)
 - PHP 7.4 or higher with the OpenSSL extension
 - An SMTP account (any provider)
+- Bundled, nothing to install: [Action Scheduler](https://actionscheduler.org/) 4.2.0, [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 5.6 and WP-Backend UI 1.0.2 (shared admin design system)
 
 ## Installation
 
@@ -121,9 +123,20 @@ wp i18n make-pot . languages/relaymint.pot --exclude=libraries,plugin-update-che
 wp i18n make-mo languages/
 ```
 
-Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler 4.2.0) and `plugin-update-checker/` (PUC 5.6).
+Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler 4.2.0), `libraries/wp-backend-ui/` (WP-Backend UI 1.0.2, shared admin design system) and `plugin-update-checker/` (PUC 5.6).
+
+To update WP-Backend UI, replace `libraries/wp-backend-ui/` with the new release (only `wp-backend-ui.php`, `includes/`, `assets/` and `README.md`). If several plugins bundle the library, the newest copy is loaded.
 
 ## Changelog
+
+### [0.2.0] — 2026-10-09
+
+#### Changed
+- Unified admin design via the bundled WP-Backend UI 1.0.2 (`libraries/wp-backend-ui/`): shared page header with version badge, tabs, cards and design tokens on Settings, Email Log and Tools.
+- Email log: status pills are now badges; the detail view shows the entry as a card with a key/value list, headers and message in cards, Back/Resend in the header.
+- Tools: test email and debug log are shown as cards; test results as inline alerts.
+- Smart Routing routes and the domain check / rate limit sub-options are shown as cards.
+- Confirmation dialogs use the library's `data-wpb-confirm`; `assets/css/admin.css` only contains Relaymint-specific layout.
 
 ### [0.1.0] — 2026-10-09
 
