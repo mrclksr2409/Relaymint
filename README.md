@@ -136,7 +136,7 @@ To update WP-Backend UI, replace `libraries/wp-backend-ui/` with the new release
 
 ## Changelog
 
-### [Unreleased]
+### [0.3.0] — 2026-10-09
 
 #### Added
 - Update channel setting (Misc tab): stable (GitHub Releases from `main`) or beta (`beta` branch).
