@@ -1,0 +1,871 @@
+# Copyright (C) 2026 Marcel Kaiser
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Relaymint 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/mrclksr2409/Relaymint/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-09T14:34:44+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: relaymint\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Plugin Name of the plugin
+#: relaymint.php
+#: includes/admin/class-relaymint-admin.php:51
+#: includes/admin/class-relaymint-admin.php:52
+msgid "Relaymint"
+msgstr "Relaymint"
+
+#. Plugin URI of the plugin
+#: relaymint.php
+msgid "https://github.com/mrclksr2409/Relaymint"
+msgstr ""
+
+#. Description of the plugin
+#: relaymint.php
+msgid "Reliable SMTP delivery for WordPress with email logging, smart routing, background sending and rate limiting."
+msgstr "Zuverlässiger SMTP-Versand für WordPress mit E-Mail-Protokoll, Smart Routing, Hintergrundversand und Ratenbegrenzung."
+
+#. Author of the plugin
+#: relaymint.php
+msgid "Marcel Kaiser"
+msgstr ""
+
+#. Author URI of the plugin
+#: relaymint.php
+msgid "https://marcel-kaiser.de"
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:59
+#: includes/admin/class-relaymint-admin.php:73
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/admin/class-relaymint-admin.php:60
+#: includes/admin/class-relaymint-admin.php:135
+#: includes/admin/views/log-list.php:15
+#: includes/admin/views/settings-logs.php:21
+msgid "Email Log"
+msgstr "E-Mail-Protokoll"
+
+#: includes/admin/class-relaymint-admin.php:61
+msgid "Tools"
+msgstr "Werkzeuge"
+
+#: includes/admin/class-relaymint-admin.php:92
+msgid "Are you sure?"
+msgstr "Bist du sicher?"
+
+#: includes/admin/class-relaymint-admin.php:132
+msgid "General"
+msgstr "Allgemein"
+
+#: includes/admin/class-relaymint-admin.php:133
+msgid "Additional Connections"
+msgstr "Zusätzliche Verbindungen"
+
+#: includes/admin/class-relaymint-admin.php:134
+#: includes/admin/views/settings-routing.php:126
+msgid "Smart Routing"
+msgstr "Smart Routing"
+
+#: includes/admin/class-relaymint-admin.php:136
+msgid "Misc"
+msgstr "Sonstiges"
+
+#: includes/admin/class-relaymint-admin.php:147
+msgid "You are not allowed to do this."
+msgstr "Du hast keine Berechtigung für diese Aktion."
+
+#: includes/admin/class-relaymint-admin.php:186
+msgid "\"Do Not Send\" is enabled: no emails are sent from this site."
+msgstr "„Nicht senden“ ist aktiv: Diese Website versendet keine E-Mails."
+
+#. translators: %s: site domain
+#: includes/admin/class-relaymint-admin.php:192
+#, php-format
+msgid "Domain check: %s is not an allowed domain, the SMTP settings are not used."
+msgstr "Domain-Prüfung: %s ist keine erlaubte Domain, die SMTP-Einstellungen werden nicht verwendet."
+
+#: includes/admin/class-relaymint-admin.php:220
+msgid "Relaymint Settings"
+msgstr "Relaymint-Einstellungen"
+
+#. translators: %d: number of entries
+#: includes/admin/class-relaymint-admin.php:250
+#, php-format
+msgid "%d log entry deleted."
+msgid_plural "%d log entries deleted."
+msgstr[0] "%d Protokolleintrag gelöscht."
+msgstr[1] "%d Protokolleinträge gelöscht."
+
+#: includes/admin/class-relaymint-admin.php:385
+msgid "Email rate limiting requires \"Optimize Email Sending\" and was not enabled."
+msgstr "Die E-Mail-Ratenbegrenzung erfordert „E-Mail-Versand optimieren“ und wurde nicht aktiviert."
+
+#: includes/admin/class-relaymint-admin.php:396
+msgid "Unknown settings tab."
+msgstr "Unbekannter Einstellungs-Tab."
+
+#: includes/admin/class-relaymint-admin.php:399
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: includes/admin/class-relaymint-admin.php:411
+msgid "Connection deleted."
+msgstr "Verbindung gelöscht."
+
+#: includes/admin/class-relaymint-admin.php:427
+msgid "Please enter a valid email address."
+msgstr "Bitte gib eine gültige E-Mail-Adresse ein."
+
+#. translators: %s: site name
+#: includes/admin/class-relaymint-admin.php:445
+#, php-format
+msgid "Relaymint: Test email from %s"
+msgstr "Relaymint: Test-E-Mail von %s"
+
+#: includes/admin/class-relaymint-admin.php:446
+msgid "Congratulations, Relaymint is configured correctly and this test email was delivered."
+msgstr "Glückwunsch, Relaymint ist korrekt eingerichtet und diese Test-E-Mail wurde zugestellt."
+
+#. translators: %s: connection name
+#: includes/admin/class-relaymint-admin.php:448
+#, php-format
+msgid "Connection: %s"
+msgstr "Verbindung: %s"
+
+#: includes/admin/class-relaymint-admin.php:452
+msgid "Relaymint test email"
+msgstr "Relaymint-Test-E-Mail"
+
+#: includes/admin/class-relaymint-admin.php:481
+msgid "Debug log cleared."
+msgstr "Debug-Log geleert."
+
+#: includes/admin/class-relaymint-admin.php:494
+msgid "This email cannot be resent because its content was not logged."
+msgstr "Diese E-Mail kann nicht erneut gesendet werden, da ihr Inhalt nicht protokolliert wurde."
+
+#: includes/admin/class-relaymint-admin.php:512
+msgid "Email resent."
+msgstr "E-Mail erneut gesendet."
+
+#: includes/admin/class-relaymint-admin.php:514
+msgid "The email could not be resent. Check the email log for details."
+msgstr "Die E-Mail konnte nicht erneut gesendet werden. Details stehen im E-Mail-Protokoll."
+
+#: includes/admin/class-relaymint-admin.php:525
+msgid "All log entries deleted."
+msgstr "Alle Protokolleinträge gelöscht."
+
+#: includes/admin/class-relaymint-admin.php:535
+msgid "Queue processed."
+msgstr "Warteschlange abgearbeitet."
+
+#: includes/admin/class-relaymint-log-list-table.php:42
+#: includes/admin/views/log-entry.php:31
+#: includes/class-relaymint-router.php:27
+msgid "Subject"
+msgstr "Betreff"
+
+#: includes/admin/class-relaymint-log-list-table.php:43
+#: includes/admin/views/log-entry.php:33
+#: includes/class-relaymint-router.php:30
+msgid "To"
+msgstr "An"
+
+#: includes/admin/class-relaymint-log-list-table.php:44
+#: includes/admin/views/log-entry.php:29
+msgid "Status"
+msgstr "Status"
+
+#: includes/admin/class-relaymint-log-list-table.php:45
+#: includes/admin/views/log-entry.php:37
+#: includes/admin/views/tools.php:63
+msgid "Connection"
+msgstr "Verbindung"
+
+#: includes/admin/class-relaymint-log-list-table.php:46
+#: includes/admin/views/log-entry.php:38
+msgid "Initiator"
+msgstr "Auslöser"
+
+#: includes/admin/class-relaymint-log-list-table.php:47
+#: includes/admin/views/log-entry.php:30
+msgid "Date"
+msgstr "Datum"
+
+#: includes/admin/class-relaymint-log-list-table.php:70
+#: includes/admin/views/settings-connections.php:74
+msgid "Delete"
+msgstr "Löschen"
+
+#: includes/admin/class-relaymint-log-list-table.php:88
+msgid "All"
+msgstr "Alle"
+
+#: includes/admin/class-relaymint-log-list-table.php:163
+msgid "No emails logged yet."
+msgstr "Noch keine E-Mails protokolliert."
+
+#: includes/admin/class-relaymint-log-list-table.php:184
+msgid "(no subject)"
+msgstr "(kein Betreff)"
+
+#: includes/admin/class-relaymint-log-list-table.php:187
+msgid "View"
+msgstr "Ansehen"
+
+#: includes/admin/class-relaymint-log-list-table.php:193
+#: includes/admin/views/log-entry.php:83
+msgid "Resend"
+msgstr "Erneut senden"
+
+#: includes/admin/class-relaymint-log-list-table.php:224
+msgid "PHP mail()"
+msgstr "PHP mail()"
+
+#. translators: %s: constant name
+#: includes/admin/views/connection-fields.php:23
+#, php-format
+msgid "Defined by the constant %s in wp-config.php."
+msgstr "Durch die Konstante %s in der wp-config.php festgelegt."
+
+#: includes/admin/views/connection-fields.php:31
+msgid "Sender"
+msgstr "Absender"
+
+#: includes/admin/views/connection-fields.php:34
+#: includes/admin/views/settings-connections.php:55
+msgid "From Email"
+msgstr "Absender-E-Mail"
+
+#: includes/admin/views/connection-fields.php:38
+msgid "The email address emails are sent from. Most SMTP providers require an address of the authenticated account or domain."
+msgstr "Die Adresse, von der E-Mails gesendet werden. Die meisten SMTP-Anbieter verlangen eine Adresse des angemeldeten Kontos bzw. der Domain."
+
+#: includes/admin/views/connection-fields.php:39
+msgid "Force From Email"
+msgstr "Absender-E-Mail erzwingen"
+
+#: includes/admin/views/connection-fields.php:40
+msgid "Use this address for every email, even if a plugin sets a different one. Otherwise it only replaces the WordPress default address."
+msgstr "Diese Adresse für jede E-Mail verwenden, auch wenn ein Plugin eine andere setzt. Andernfalls ersetzt sie nur die WordPress-Standardadresse."
+
+#: includes/admin/views/connection-fields.php:44
+msgid "From Name"
+msgstr "Absendername"
+
+#: includes/admin/views/connection-fields.php:48
+msgid "Force From Name"
+msgstr "Absendername erzwingen"
+
+#: includes/admin/views/connection-fields.php:52
+msgid "Return Path"
+msgstr "Return-Path"
+
+#: includes/admin/views/connection-fields.php:54
+msgid "Set the return path to match the From Email"
+msgstr "Return-Path auf die Absender-E-Mail setzen"
+
+#: includes/admin/views/connection-fields.php:55
+msgid "Bounce notifications are then sent to the From Email address."
+msgstr "Unzustellbarkeitsmeldungen gehen dann an die Absender-E-Mail."
+
+#: includes/admin/views/connection-fields.php:60
+msgid "SMTP Server"
+msgstr "SMTP-Server"
+
+#: includes/admin/views/connection-fields.php:63
+#: includes/admin/views/settings-connections.php:56
+msgid "SMTP Host"
+msgstr "SMTP-Host"
+
+#: includes/admin/views/connection-fields.php:70
+msgid "Encryption"
+msgstr "Verschlüsselung"
+
+#: includes/admin/views/connection-fields.php:75
+msgid "None"
+msgstr "Keine"
+
+#: includes/admin/views/connection-fields.php:76
+msgid "SSL"
+msgstr "SSL"
+
+#: includes/admin/views/connection-fields.php:77
+msgid "TLS"
+msgstr "TLS"
+
+#: includes/admin/views/connection-fields.php:85
+msgid "TLS (STARTTLS) is recommended for port 587, SSL for port 465."
+msgstr "TLS (STARTTLS) wird für Port 587 empfohlen, SSL für Port 465."
+
+#: includes/admin/views/connection-fields.php:89
+msgid "SMTP Port"
+msgstr "SMTP-Port"
+
+#: includes/admin/views/connection-fields.php:96
+msgid "Auto TLS"
+msgstr "Auto-TLS"
+
+#: includes/admin/views/connection-fields.php:98
+msgid "Use TLS automatically if the server supports it"
+msgstr "TLS automatisch nutzen, wenn der Server es unterstützt"
+
+#: includes/admin/views/connection-fields.php:99
+msgid "Only relevant when encryption is set to \"None\". Disable it if your server advertises TLS but fails to use it."
+msgstr "Nur relevant, wenn die Verschlüsselung auf „Keine“ steht. Deaktivieren, wenn der Server TLS anbietet, es aber nicht korrekt nutzt."
+
+#: includes/admin/views/connection-fields.php:103
+msgid "Authentication"
+msgstr "Authentifizierung"
+
+#: includes/admin/views/connection-fields.php:105
+msgid "Use SMTP authentication"
+msgstr "SMTP-Authentifizierung verwenden"
+
+#: includes/admin/views/connection-fields.php:109
+msgid "SMTP Username"
+msgstr "SMTP-Benutzername"
+
+#: includes/admin/views/connection-fields.php:116
+msgid "SMTP Password"
+msgstr "SMTP-Passwort"
+
+#: includes/admin/views/connection-fields.php:124
+msgid "A password is stored (encrypted). Leave empty to keep it."
+msgstr "Ein Passwort ist (verschlüsselt) gespeichert. Leer lassen, um es beizubehalten."
+
+#: includes/admin/views/connection-fields.php:125
+msgid "Remove the stored password"
+msgstr "Gespeichertes Passwort entfernen"
+
+#. translators: %s: constant name
+#: includes/admin/views/connection-fields.php:133
+#, php-format
+msgid "Tip: define %s in wp-config.php to keep the password out of the database."
+msgstr "Tipp: Definiere %s in der wp-config.php, damit das Passwort nicht in der Datenbank liegt."
+
+#: includes/admin/views/log-entry.php:17
+msgid "Email Details"
+msgstr "E-Mail-Details"
+
+#: includes/admin/views/log-entry.php:18
+msgid "Back to the email log"
+msgstr "Zurück zum E-Mail-Protokoll"
+
+#: includes/admin/views/log-entry.php:21
+msgid "Log entry not found."
+msgstr "Protokolleintrag nicht gefunden."
+
+#: includes/admin/views/log-entry.php:32
+#: includes/class-relaymint-router.php:29
+msgid "From"
+msgstr "Von"
+
+#: includes/admin/views/log-entry.php:34
+#: includes/class-relaymint-router.php:31
+msgid "CC"
+msgstr "CC"
+
+#: includes/admin/views/log-entry.php:35
+#: includes/class-relaymint-router.php:32
+msgid "BCC"
+msgstr "BCC"
+
+#: includes/admin/views/log-entry.php:36
+#: includes/class-relaymint-router.php:33
+msgid "Reply-To"
+msgstr "Antwort an"
+
+#: includes/admin/views/log-entry.php:39
+msgid "File"
+msgstr "Datei"
+
+#: includes/admin/views/log-entry.php:40
+msgid "Attachments"
+msgstr "Anhänge"
+
+#: includes/admin/views/log-entry.php:59
+msgid "Error"
+msgstr "Fehler"
+
+#: includes/admin/views/log-entry.php:67
+msgid "Headers"
+msgstr "Header"
+
+#: includes/admin/views/log-entry.php:71
+#: includes/class-relaymint-router.php:28
+msgid "Message"
+msgstr "Nachricht"
+
+#: includes/admin/views/log-entry.php:73
+msgid "The message content was not logged. Enable \"Log Email Content\" in the settings to store it."
+msgstr "Der Nachrichteninhalt wurde nicht protokolliert. Aktiviere „E-Mail-Inhalt protokollieren“ in den Einstellungen, um ihn zu speichern."
+
+#: includes/admin/views/log-list.php:17
+msgid "Delete all"
+msgstr "Alle löschen"
+
+#: includes/admin/views/log-list.php:24
+msgid "The email log is disabled."
+msgstr "Das E-Mail-Protokoll ist deaktiviert."
+
+#: includes/admin/views/log-list.php:25
+msgid "Enable it"
+msgstr "Aktivieren"
+
+#: includes/admin/views/log-list.php:40
+msgid "Search emails"
+msgstr "E-Mails durchsuchen"
+
+#: includes/admin/views/settings-connections.php:23
+#: includes/admin/views/settings-connections.php:49
+msgid "Add Connection"
+msgstr "Verbindung hinzufügen"
+
+#: includes/admin/views/settings-connections.php:23
+msgid "Edit Connection"
+msgstr "Verbindung bearbeiten"
+
+#: includes/admin/views/settings-connections.php:32
+msgid "Connection Name"
+msgstr "Name der Verbindung"
+
+#: includes/admin/views/settings-connections.php:40
+msgid "Save Connection"
+msgstr "Verbindung speichern"
+
+#: includes/admin/views/settings-connections.php:41
+msgid "Back"
+msgstr "Zurück"
+
+#: includes/admin/views/settings-connections.php:48
+msgid "Additional connections can be used by Smart Routing to send specific emails through a different SMTP account."
+msgstr "Zusätzliche Verbindungen kann Smart Routing nutzen, um bestimmte E-Mails über ein anderes SMTP-Konto zu senden."
+
+#: includes/admin/views/settings-connections.php:54
+msgid "Name"
+msgstr "Name"
+
+#: includes/admin/views/settings-connections.php:57
+msgid "Connection ID"
+msgstr "Verbindungs-ID"
+
+#: includes/admin/views/settings-connections.php:58
+msgid "Actions"
+msgstr "Aktionen"
+
+#: includes/admin/views/settings-connections.php:63
+msgid "No additional connections yet."
+msgstr "Noch keine zusätzlichen Verbindungen."
+
+#: includes/admin/views/settings-connections.php:72
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: includes/admin/views/settings-general.php:19
+msgid "The primary connection is used for all emails unless a Smart Routing rule picks another connection."
+msgstr "Die primäre Verbindung wird für alle E-Mails verwendet, sofern keine Smart-Routing-Regel eine andere Verbindung wählt."
+
+#: includes/admin/views/settings-general.php:26
+msgid "Send a test email"
+msgstr "Test-E-Mail senden"
+
+#: includes/admin/views/settings-logs.php:23
+msgid "Enable the email log"
+msgstr "E-Mail-Protokoll aktivieren"
+
+#: includes/admin/views/settings-logs.php:24
+msgid "Keeps a record of every email: recipients, subject, status, connection, initiator and error messages."
+msgstr "Protokolliert jede E-Mail: Empfänger, Betreff, Status, Verbindung, Auslöser und Fehlermeldungen."
+
+#: includes/admin/views/settings-logs.php:28
+msgid "Log Email Content"
+msgstr "E-Mail-Inhalt protokollieren"
+
+#: includes/admin/views/settings-logs.php:30
+msgid "Store the message body and headers"
+msgstr "Nachrichtentext und Header speichern"
+
+#: includes/admin/views/settings-logs.php:31
+msgid "Required to view and resend emails. Emails can contain personal data or password reset links, so only enable this if you need it."
+msgstr "Erforderlich zum Ansehen und erneuten Senden. E-Mails können personenbezogene Daten oder Links zum Zurücksetzen von Passwörtern enthalten – nur bei Bedarf aktivieren."
+
+#: includes/admin/views/settings-logs.php:35
+msgid "Log Retention"
+msgstr "Aufbewahrungsdauer"
+
+#: includes/admin/views/settings-logs.php:40
+msgid "Forever"
+msgstr "Unbegrenzt"
+
+#: includes/admin/views/settings-logs.php:41
+msgid "1 day"
+msgstr "1 Tag"
+
+#: includes/admin/views/settings-logs.php:42
+msgid "1 week"
+msgstr "1 Woche"
+
+#: includes/admin/views/settings-logs.php:43
+msgid "1 month"
+msgstr "1 Monat"
+
+#: includes/admin/views/settings-logs.php:44
+msgid "3 months"
+msgstr "3 Monate"
+
+#: includes/admin/views/settings-logs.php:45
+msgid "6 months"
+msgstr "6 Monate"
+
+#: includes/admin/views/settings-logs.php:46
+msgid "1 year"
+msgstr "1 Jahr"
+
+#: includes/admin/views/settings-logs.php:52
+msgid "Older log entries are deleted automatically once a day."
+msgstr "Ältere Protokolleinträge werden einmal täglich automatisch gelöscht."
+
+#: includes/admin/views/settings-misc.php:22
+msgid "Domain Check"
+msgstr "Domain-Prüfung"
+
+#: includes/admin/views/settings-misc.php:24
+msgid "Enable domain check"
+msgstr "Domain-Prüfung aktivieren"
+
+#: includes/admin/views/settings-misc.php:25
+msgid "Only use the SMTP settings when the site runs on one of the allowed domains. Useful for staging copies or migrated sites."
+msgstr "SMTP-Einstellungen nur verwenden, wenn die Website auf einer der erlaubten Domains läuft. Nützlich für Staging-Kopien oder umgezogene Websites."
+
+#: includes/admin/views/settings-misc.php:28
+msgid "Allowed domains (comma separated)"
+msgstr "Erlaubte Domains (kommagetrennt)"
+
+#. translators: %s: site domain
+#: includes/admin/views/settings-misc.php:36
+#, php-format
+msgid "Current site domain: %s"
+msgstr "Aktuelle Domain der Website: %s"
+
+#: includes/admin/views/settings-misc.php:42
+msgid "Block all emails when the domain does not match"
+msgstr "Alle E-Mails blockieren, wenn die Domain nicht passt"
+
+#: includes/admin/views/settings-misc.php:43
+msgid "Without this option, emails are sent with the default PHP mailer instead of SMTP on non-matching domains."
+msgstr "Ohne diese Option werden E-Mails auf nicht passenden Domains mit dem Standard-PHP-Mailer statt über SMTP gesendet."
+
+#: includes/admin/views/settings-misc.php:48
+msgid "Do Not Send"
+msgstr "Nicht senden"
+
+#: includes/admin/views/settings-misc.php:50
+msgid "Stop sending all emails"
+msgstr "Versand aller E-Mails stoppen"
+
+#: includes/admin/views/settings-misc.php:51
+msgid "No emails are sent from this site. Blocked emails still appear in the email log. Useful for development and staging sites."
+msgstr "Diese Website versendet keine E-Mails. Blockierte E-Mails erscheinen weiterhin im E-Mail-Protokoll. Nützlich für Entwicklungs- und Staging-Seiten."
+
+#: includes/admin/views/settings-misc.php:55
+msgid "Allow Insecure SSL Certificates"
+msgstr "Unsichere SSL-Zertifikate erlauben"
+
+#: includes/admin/views/settings-misc.php:57
+msgid "Allow self-signed or invalid SSL certificates"
+msgstr "Selbstsignierte oder ungültige SSL-Zertifikate erlauben"
+
+#: includes/admin/views/settings-misc.php:58
+msgid "Disables certificate verification for the SMTP connection. Only enable this if your server uses a self-signed certificate — it makes the connection vulnerable to interception."
+msgstr "Deaktiviert die Zertifikatsprüfung der SMTP-Verbindung. Nur aktivieren, wenn dein Server ein selbstsigniertes Zertifikat nutzt – die Verbindung wird dadurch anfällig für Abhören."
+
+#: includes/admin/views/settings-misc.php:62
+#: includes/admin/views/tools.php:80
+msgid "Debug Log"
+msgstr "Debug-Log"
+
+#: includes/admin/views/settings-misc.php:64
+msgid "Enable debug log"
+msgstr "Debug-Log aktivieren"
+
+#: includes/admin/views/settings-misc.php:66
+msgid "Records the SMTP conversation of every email (credentials are masked). Errors are always recorded."
+msgstr "Zeichnet die SMTP-Kommunikation jeder E-Mail auf (Zugangsdaten werden maskiert). Fehler werden immer aufgezeichnet."
+
+#: includes/admin/views/settings-misc.php:67
+msgid "View debug log"
+msgstr "Debug-Log ansehen"
+
+#: includes/admin/views/settings-misc.php:72
+msgid "Optimize Email Sending"
+msgstr "E-Mail-Versand optimieren"
+
+#: includes/admin/views/settings-misc.php:74
+msgid "Send emails in the background"
+msgstr "E-Mails im Hintergrund senden"
+
+#: includes/admin/views/settings-misc.php:75
+msgid "Emails are queued and sent asynchronously via Action Scheduler, so pages that send emails load faster."
+msgstr "E-Mails werden in eine Warteschlange gestellt und asynchron über den Action Scheduler gesendet, sodass Seiten, die E-Mails versenden, schneller laden."
+
+#. translators: %d: number of emails
+#: includes/admin/views/settings-misc.php:82
+#, php-format
+msgid "%d email is waiting in the queue."
+msgid_plural "%d emails are waiting in the queue."
+msgstr[0] "%d E-Mail wartet in der Warteschlange."
+msgstr[1] "%d E-Mails warten in der Warteschlange."
+
+#: includes/admin/views/settings-misc.php:87
+msgid "Process queue now"
+msgstr "Warteschlange jetzt abarbeiten"
+
+#: includes/admin/views/settings-misc.php:93
+msgid "Email Rate Limiting"
+msgstr "E-Mail-Ratenbegrenzung"
+
+#: includes/admin/views/settings-misc.php:95
+msgid "Limit the number of emails sent"
+msgstr "Anzahl gesendeter E-Mails begrenzen"
+
+#: includes/admin/views/settings-misc.php:96
+msgid "Emails above the limit stay in the queue and are sent as soon as the limit allows. Leave a field empty or 0 for no limit."
+msgstr "E-Mails über dem Limit bleiben in der Warteschlange und werden gesendet, sobald das Limit es zulässt. Feld leer oder 0 lassen für kein Limit."
+
+#: includes/admin/views/settings-misc.php:100
+msgid "Per minute"
+msgstr "Pro Minute"
+
+#: includes/admin/views/settings-misc.php:101
+msgid "Per hour"
+msgstr "Pro Stunde"
+
+#: includes/admin/views/settings-misc.php:102
+msgid "Per day"
+msgstr "Pro Tag"
+
+#: includes/admin/views/settings-misc.php:103
+msgid "Per week"
+msgstr "Pro Woche"
+
+#: includes/admin/views/settings-routing.php:25
+msgid "Field"
+msgstr "Feld"
+
+#: includes/admin/views/settings-routing.php:30
+msgid "Operator"
+msgstr "Operator"
+
+#: includes/admin/views/settings-routing.php:35
+msgid "Value"
+msgstr "Wert"
+
+#: includes/admin/views/settings-routing.php:36
+msgid "Remove condition"
+msgstr "Bedingung entfernen"
+
+#: includes/admin/views/settings-routing.php:56
+msgid "+ And"
+msgstr "+ Und"
+
+#: includes/admin/views/settings-routing.php:57
+msgid "or"
+msgstr "oder"
+
+#: includes/admin/views/settings-routing.php:71
+msgid "Enabled"
+msgstr "Aktiv"
+
+#: includes/admin/views/settings-routing.php:73
+msgid "Send via"
+msgstr "Senden über"
+
+#: includes/admin/views/settings-routing.php:81
+msgid "Move up"
+msgstr "Nach oben"
+
+#: includes/admin/views/settings-routing.php:82
+msgid "Move down"
+msgstr "Nach unten"
+
+#: includes/admin/views/settings-routing.php:83
+msgid "Remove route"
+msgstr "Route entfernen"
+
+#: includes/admin/views/settings-routing.php:86
+msgid "if the following conditions match:"
+msgstr "wenn die folgenden Bedingungen zutreffen:"
+
+#: includes/admin/views/settings-routing.php:94
+msgid "+ Add condition group (or)"
+msgstr "+ Bedingungsgruppe hinzufügen (oder)"
+
+#: includes/admin/views/settings-routing.php:105
+msgid "Send emails through different connections based on conditions. Routes are checked from top to bottom; the first matching route wins. Emails that match no route use the primary connection."
+msgstr "E-Mails abhängig von Bedingungen über verschiedene Verbindungen senden. Routen werden von oben nach unten geprüft, die erste passende Route gewinnt. E-Mails ohne passende Route nutzen die primäre Verbindung."
+
+#: includes/admin/views/settings-routing.php:110
+msgid "Smart Routing needs at least one additional connection."
+msgstr "Smart Routing benötigt mindestens eine zusätzliche Verbindung."
+
+#: includes/admin/views/settings-routing.php:111
+msgid "Add a connection"
+msgstr "Verbindung hinzufügen"
+
+#: includes/admin/views/settings-routing.php:127
+msgid "Enable Smart Routing"
+msgstr "Smart Routing aktivieren"
+
+#: includes/admin/views/settings-routing.php:139
+msgid "+ Add route"
+msgstr "+ Route hinzufügen"
+
+#: includes/admin/views/tools.php:19
+msgid "Relaymint Tools"
+msgstr "Relaymint-Werkzeuge"
+
+#: includes/admin/views/tools.php:21
+msgid "Send a Test Email"
+msgstr "Test-E-Mail senden"
+
+#. translators: %s: email address
+#: includes/admin/views/tools.php:31
+#, php-format
+msgid "The test email was sent to %s."
+msgstr "Die Test-E-Mail wurde an %s gesendet."
+
+#: includes/admin/views/tools.php:40
+msgid "The test email could not be sent."
+msgstr "Die Test-E-Mail konnte nicht gesendet werden."
+
+#: includes/admin/views/tools.php:48
+msgid "SMTP debug output"
+msgstr "SMTP-Debug-Ausgabe"
+
+#: includes/admin/views/tools.php:59
+msgid "Send To"
+msgstr "Empfänger"
+
+#: includes/admin/views/tools.php:73
+msgid "HTML"
+msgstr "HTML"
+
+#: includes/admin/views/tools.php:74
+msgid "Send as HTML"
+msgstr "Als HTML senden"
+
+#: includes/admin/views/tools.php:77
+msgid "Send Test Email"
+msgstr "Test-E-Mail senden"
+
+#: includes/admin/views/tools.php:83
+msgid "Only errors are recorded. Enable the debug log in the Misc settings to record the full SMTP conversation."
+msgstr "Es werden nur Fehler aufgezeichnet. Aktiviere das Debug-Log unter „Sonstiges“, um die vollständige SMTP-Kommunikation aufzuzeichnen."
+
+#: includes/admin/views/tools.php:88
+msgid "The debug log is empty."
+msgstr "Das Debug-Log ist leer."
+
+#: includes/admin/views/tools.php:91
+msgid "Clear debug log"
+msgstr "Debug-Log leeren"
+
+#: includes/class-relaymint-connections.php:142
+msgid "Primary connection"
+msgstr "Primäre Verbindung"
+
+#: includes/class-relaymint-interceptor.php:65
+msgid "Blocked by the \"Do Not Send\" setting."
+msgstr "Durch die Einstellung „Nicht senden“ blockiert."
+
+#. translators: %s: site domain
+#: includes/class-relaymint-interceptor.php:84
+#, php-format
+msgid "Blocked by the domain check: %s is not an allowed domain."
+msgstr "Durch die Domain-Prüfung blockiert: %s ist keine erlaubte Domain."
+
+#: includes/class-relaymint-logger.php:54
+msgid "Sent"
+msgstr "Gesendet"
+
+#: includes/class-relaymint-logger.php:55
+msgid "Failed"
+msgstr "Fehlgeschlagen"
+
+#: includes/class-relaymint-logger.php:56
+msgid "Queued"
+msgstr "In Warteschlange"
+
+#: includes/class-relaymint-logger.php:57
+msgid "Sending"
+msgstr "Wird gesendet"
+
+#: includes/class-relaymint-logger.php:58
+msgid "Blocked"
+msgstr "Blockiert"
+
+#: includes/class-relaymint-logger.php:154
+msgid "Unknown error"
+msgstr "Unbekannter Fehler"
+
+#: includes/class-relaymint-queue.php:105
+msgid "Could not add email to the queue."
+msgstr "E-Mail konnte nicht zur Warteschlange hinzugefügt werden."
+
+#: includes/class-relaymint-router.php:34
+msgid "Header"
+msgstr "Header"
+
+#: includes/class-relaymint-router.php:35
+msgid "Initiator (plugin/theme)"
+msgstr "Auslöser (Plugin/Theme)"
+
+#: includes/class-relaymint-router.php:46
+msgid "contains"
+msgstr "enthält"
+
+#: includes/class-relaymint-router.php:47
+msgid "does not contain"
+msgstr "enthält nicht"
+
+#: includes/class-relaymint-router.php:48
+msgid "is"
+msgstr "ist"
+
+#: includes/class-relaymint-router.php:49
+msgid "is not"
+msgstr "ist nicht"
+
+#: includes/class-relaymint-router.php:50
+msgid "starts with"
+msgstr "beginnt mit"
+
+#: includes/class-relaymint-router.php:51
+msgid "ends with"
+msgstr "endet mit"
+
+#: includes/class-relaymint-router.php:52
+msgid "matches regex"
+msgstr "passt auf Regex"
+
+#: includes/class-relaymint-router.php:53
+msgid "does not match regex"
+msgstr "passt nicht auf Regex"
+
+#. translators: %s: regular expression
+#: includes/class-relaymint-router.php:281
+#, php-format
+msgid "The regular expression %s is invalid and was skipped."
+msgstr "Der reguläre Ausdruck %s ist ungültig und wurde übersprungen."

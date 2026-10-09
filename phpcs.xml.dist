@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="Relaymint">
+	<description>Coding standards for Relaymint.</description>
+	<file>.</file>
+	<exclude-pattern>/libraries/*</exclude-pattern>
+	<exclude-pattern>/plugin-update-checker/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<arg name="extensions" value="php"/>
+	<rule ref="WordPress">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+	</rule>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="relaymint"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="relaymint"/>
+			</property>
+		</properties>
+	</rule>
+	<config name="minimum_wp_version" value="6.9"/>
+	<config name="testVersion" value="7.4-"/>
+</ruleset>
