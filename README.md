@@ -125,7 +125,7 @@ Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler
 
 ## Changelog
 
-### [1.0.0] — 2026-10-09
+### [0.1.0] — 2026-10-09
 
 #### Added
 - SMTP mailer with encrypted credentials and `wp-config.php` overrides.
