@@ -422,6 +422,7 @@ class Relaymint_Admin {
 					'debug_log'              => ! empty( $misc['debug_log'] ),
 					'optimize_sending'       => ! empty( $misc['optimize_sending'] ),
 					'rate_limit'             => ! empty( $misc['rate_limit'] ) && ! empty( $misc['optimize_sending'] ),
+					'update_channel'         => isset( $misc['update_channel'] ) && 'beta' === $misc['update_channel'] ? 'beta' : 'stable',
 				);
 				foreach ( array( 'minute', 'hour', 'day', 'week' ) as $period ) {
 					$clean[ 'rate_limit_' . $period ] = isset( $misc[ 'rate_limit_' . $period ] ) ? absint( $misc[ 'rate_limit_' . $period ] ) : 0;
@@ -432,7 +433,17 @@ class Relaymint_Admin {
 				if ( ! empty( $misc['rate_limit'] ) && ! $clean['optimize_sending'] ) {
 					add_settings_error( 'relaymint', 'rate_limit', __( 'Email rate limiting requires "Optimize Email Sending" and was not enabled.', 'relaymint' ), 'warning' );
 				}
+				$channel_changed = Relaymint_Options::value( 'misc', 'update_channel' ) !== $clean['update_channel'];
 				Relaymint_Options::update( 'misc', $clean );
+
+				// Update channel switched: drop cached update data so the next check uses the new source.
+				if ( $channel_changed ) {
+					global $relaymint_update_checker;
+					if ( $relaymint_update_checker ) {
+						$relaymint_update_checker->resetUpdateState();
+					}
+					delete_site_transient( 'update_plugins' );
+				}
 
 				// Queue disabled while emails are waiting: send them in the background anyway.
 				if ( ! $clean['optimize_sending'] && Relaymint_Queue::count_pending() > 0 ) {

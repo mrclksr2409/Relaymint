@@ -873,3 +873,19 @@ msgstr "Der reguläre Ausdruck %s ist ungültig und wurde übersprungen."
 #: includes/admin/class-relaymint-admin.php:145
 msgid "SMTP delivery, smart routing and email log"
 msgstr "SMTP-Versand, Smart Routing und E-Mail-Log"
+
+#: includes/admin/views/settings-misc.php
+msgid "Update Channel"
+msgstr "Update-Kanal"
+
+#: includes/admin/views/settings-misc.php
+msgid "Stable (GitHub releases)"
+msgstr "Stabil (GitHub-Releases)"
+
+#: includes/admin/views/settings-misc.php
+msgid "Beta (beta branch)"
+msgstr "Beta (beta-Branch)"
+
+#: includes/admin/views/settings-misc.php
+msgid "The beta channel offers updates from the current state of the beta branch. These versions may be unstable — do not use it on production sites. Switching back to stable does not downgrade: the next stable release is installed once its version is higher."
+msgstr "Der Beta-Kanal bietet Updates aus dem aktuellen Stand des beta-Branches an. Diese Versionen können instabil sein – nicht auf Produktivseiten verwenden. Ein Wechsel zurück auf Stabil führt kein Downgrade durch: Das nächste stabile Release wird installiert, sobald seine Version höher ist."

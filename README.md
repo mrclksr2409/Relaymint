@@ -88,6 +88,13 @@ define( 'RELAYMINT_SMTP_PASS_CABC12345', 'secret' );
 
 This plugin uses the [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) library to deliver updates directly from GitHub Releases. Once installed, WordPress will check for updates automatically (every 12 hours by default) and show them on the standard **Dashboard → Updates** screen. You can trigger a manual check via **Plugins → Check for updates**.
 
+Under **Settings → Misc → Update Channel** you can choose the source:
+
+- **Stable** (default) — GitHub Releases of the `main` branch.
+- **Beta** — the current head of the `beta` branch. An update is offered as soon as the `Version` header in `relaymint.php` on `beta` is higher than the installed version. Not intended for production sites.
+
+Switching the channel clears the cached update data. Switching back from beta to stable does not downgrade; the next stable release is installed once its version is higher than the installed beta.
+
 Releases are built by `.github/workflows/release.yml`: pushing a tag `vX.Y.Z` creates `relaymint.zip` and attaches it to the GitHub release of that tag.
 
 ## Hooks & Filters
@@ -128,6 +135,11 @@ Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler
 To update WP-Backend UI, replace `libraries/wp-backend-ui/` with the new release (only `wp-backend-ui.php`, `includes/`, `assets/` and `README.md`). If several plugins bundle the library, the newest copy is loaded.
 
 ## Changelog
+
+### [Unreleased]
+
+#### Added
+- Update channel setting (Misc tab): stable (GitHub Releases from `main`) or beta (`beta` branch).
 
 ### [0.2.0] — 2026-10-09
 

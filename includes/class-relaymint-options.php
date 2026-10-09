@@ -81,6 +81,7 @@ class Relaymint_Options {
 				'rate_limit_hour'        => 0,
 				'rate_limit_day'         => 0,
 				'rate_limit_week'        => 0,
+				'update_channel'         => 'stable',
 			),
 		);
 	}

@@ -871,3 +871,19 @@ msgstr ""
 #: includes/admin/class-relaymint-admin.php:145
 msgid "SMTP delivery, smart routing and email log"
 msgstr ""
+
+#: includes/admin/views/settings-misc.php
+msgid "Update Channel"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php
+msgid "Stable (GitHub releases)"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php
+msgid "Beta (beta branch)"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php
+msgid "The beta channel offers updates from the current state of the beta branch. These versions may be unstable — do not use it on production sites. Switching back to stable does not downgrade: the next stable release is installed once its version is higher."
+msgstr ""

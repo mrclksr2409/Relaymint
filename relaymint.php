@@ -27,19 +27,6 @@ define( 'RELAYMINT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'RELAYMINT_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Plugin Update Checker — pulls updates from GitHub Releases.
- */
-require_once RELAYMINT_DIR . 'plugin-update-checker/plugin-update-checker.php';
-
-$relaymint_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
-	'https://github.com/mrclksr2409/Relaymint/',
-	__FILE__,
-	'relaymint'
-);
-$relaymint_update_checker->setBranch( 'main' );
-$relaymint_update_checker->getVcsApi()->enableReleaseAssets( '/\.zip($|[?&#])/i' );
-
-/**
  * Action Scheduler — used for background sending and housekeeping.
  * The library resolves version conflicts itself if another plugin bundles it too.
  */
@@ -65,6 +52,20 @@ require_once RELAYMINT_DIR . 'includes/class-relaymint-queue.php';
 require_once RELAYMINT_DIR . 'includes/class-relaymint-mailer.php';
 require_once RELAYMINT_DIR . 'includes/class-relaymint-interceptor.php';
 require_once RELAYMINT_DIR . 'includes/class-relaymint.php';
+
+/**
+ * Plugin Update Checker — pulls updates from GitHub.
+ * Stable channel: GitHub Releases of the `main` branch. Beta channel: head of the `beta` branch.
+ */
+require_once RELAYMINT_DIR . 'plugin-update-checker/plugin-update-checker.php';
+
+$relaymint_update_checker = YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+	'https://github.com/mrclksr2409/Relaymint/',
+	__FILE__,
+	'relaymint'
+);
+$relaymint_update_checker->setBranch( 'beta' === Relaymint_Options::value( 'misc', 'update_channel' ) ? 'beta' : 'main' );
+$relaymint_update_checker->getVcsApi()->enableReleaseAssets( '/\.zip($|[?&#])/i' );
 
 register_activation_hook( __FILE__, array( 'Relaymint_Installer', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Relaymint_Installer', 'deactivate' ) );

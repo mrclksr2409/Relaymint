@@ -117,6 +117,16 @@ $relaymint_pending = Relaymint_Queue::count_pending();
 				</div>
 			</td>
 		</tr>
+		<tr>
+			<th scope="row"><label for="relaymint-update-channel"><?php esc_html_e( 'Update Channel', 'relaymint' ); ?></label></th>
+			<td>
+				<select id="relaymint-update-channel" name="misc[update_channel]">
+					<option value="stable" <?php selected( $relaymint_misc['update_channel'], 'stable' ); ?>><?php esc_html_e( 'Stable (GitHub releases)', 'relaymint' ); ?></option>
+					<option value="beta" <?php selected( $relaymint_misc['update_channel'], 'beta' ); ?>><?php esc_html_e( 'Beta (beta branch)', 'relaymint' ); ?></option>
+				</select>
+				<p class="description"><?php esc_html_e( 'The beta channel offers updates from the current state of the beta branch. These versions may be unstable — do not use it on production sites. Switching back to stable does not downgrade: the next stable release is installed once its version is higher.', 'relaymint' ); ?></p>
+			</td>
+		</tr>
 	</table>
 
 	<?php submit_button(); ?>
