@@ -1,0 +1,25 @@
+# Dependencies
+/vendor/
+/node_modules/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.idea/
+.vscode/
+*.sublime-*
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Tests
+.phpunit.result.cache
+/coverage/
+
+# Packaged releases
+*.zip

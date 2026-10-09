@@ -1,0 +1,36 @@
+name: Build and Attach Release ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create release ZIP
+        run: |
+          SLUG="relaymint"
+          mkdir -p /tmp/release/$SLUG
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='.editorconfig' \
+            --exclude='phpcs.xml.dist' \
+            --exclude='node_modules' \
+            --exclude='tests' \
+            ./ /tmp/release/$SLUG/
+          cd /tmp/release && zip -qr $SLUG.zip $SLUG
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: /tmp/release/relaymint.zip

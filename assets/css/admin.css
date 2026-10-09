@@ -1,0 +1,183 @@
+/* Relaymint admin styles. */
+
+.relaymint-wrap .nav-tab-wrapper {
+	margin-bottom: 1em;
+}
+
+.relaymint-sub {
+	margin-top: 0.75em;
+	padding: 0.25em 1em;
+	border-left: 3px solid #dcdcde;
+}
+
+.relaymint-locked {
+	color: #996800;
+}
+
+.relaymint-delete,
+.relaymint-delete:hover {
+	color: #b32d2e;
+}
+
+.relaymint-rate-label {
+	display: inline-block;
+	min-width: 8em;
+}
+
+/* Smart Routing */
+.relaymint-route {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	margin: 0 0 1em;
+	padding: 1em;
+	max-width: 960px;
+}
+
+.relaymint-route-header {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	align-items: center;
+}
+
+.relaymint-route-actions {
+	margin-left: auto;
+}
+
+.relaymint-route-actions .button-link {
+	vertical-align: middle;
+}
+
+.relaymint-route-if {
+	margin: 0.75em 0 0.5em;
+	color: #646970;
+}
+
+.relaymint-group {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 0.75em;
+	margin-bottom: 1.75em;
+	position: relative;
+}
+
+.relaymint-or-label {
+	position: absolute;
+	left: 50%;
+	bottom: -1.5em;
+	transform: translateX(-50%);
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: 600;
+	color: #646970;
+}
+
+.relaymint-group:last-child .relaymint-or-label {
+	display: none;
+}
+
+.relaymint-condition {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	align-items: center;
+	margin-bottom: 0.5em;
+}
+
+.relaymint-condition .regular-text {
+	flex: 1 1 200px;
+}
+
+/* Email log */
+.relaymint-status {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 12px;
+	background: #dcdcde;
+	color: #1d2327;
+}
+
+.relaymint-status-sent {
+	background: #d1e7dd;
+	color: #0a3622;
+}
+
+.relaymint-status-failed {
+	background: #f8d7da;
+	color: #58151c;
+}
+
+.relaymint-status-queued,
+.relaymint-status-sending {
+	background: #fff3cd;
+	color: #664d03;
+}
+
+.relaymint-status-blocked {
+	background: #e2e3e5;
+	color: #41464b;
+}
+
+.relaymint-error-text {
+	color: #b32d2e;
+}
+
+.relaymint-entry {
+	max-width: 960px;
+}
+
+.relaymint-entry th {
+	width: 160px;
+	font-weight: 600;
+}
+
+.relaymint-entry td {
+	word-break: break-word;
+}
+
+.relaymint-pre {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	padding: 1em;
+	max-width: 960px;
+	max-height: 500px;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.relaymint-preview {
+	width: 100%;
+	max-width: 960px;
+	height: 500px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+/* Debug log */
+.relaymint-debug-entry {
+	margin-bottom: 1em;
+}
+
+.relaymint-debug-meta {
+	font-size: 12px;
+	color: #646970;
+	margin-bottom: 2px;
+}
+
+.relaymint-debug-error .relaymint-debug-meta {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+.relaymint-debug-entry .relaymint-pre {
+	margin: 0;
+	max-height: 300px;
+}
+
+.relaymint-wrap [hidden] {
+	display: none !important;
+}
