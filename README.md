@@ -163,6 +163,12 @@ To update WP-Backend UI, replace `libraries/wp-backend-ui/` with the new release
 
 ## Changelog
 
+### [0.4.1] — 2026-10-10
+
+#### Changed
+- Author URI now points to the GitHub profile.
+- New "Wiki" link in the plugin row on the Plugins screen.
+
 ### [0.4.0] — 2026-10-10
 
 #### Added
