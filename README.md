@@ -6,6 +6,8 @@
 ![WordPress](https://img.shields.io/badge/WordPress-6.9%2B-blue)
 ![PHP](https://img.shields.io/badge/PHP-7.4%2B-purple)
 
+**Documentation (German):** detailed setup guides, reference and troubleshooting in the [Relaymint Wiki](https://github.com/mrclksr2409/Relaymint/wiki).
+
 ## Description
 
 Relaymint replaces the default PHP `mail()` transport of WordPress with an authenticated SMTP connection or the Microsoft Graph API (Microsoft 365 / Outlook), so emails from WordPress core, plugins and themes actually reach the inbox. Every email is logged, can be routed through different SMTP accounts based on rules, and can optionally be sent in the background with rate limits — a self-hosted alternative to plugins like Easy WP SMTP.

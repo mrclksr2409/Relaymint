@@ -1,0 +1,1 @@
+Relaymint · [Repository](https://github.com/mrclksr2409/Relaymint) · [Releases](https://github.com/mrclksr2409/Relaymint/releases) · [Issues](https://github.com/mrclksr2409/Relaymint/issues) — Diese Seiten werden aus dem Ordner `wiki/` im Repository erzeugt. Änderungen bitte dort vornehmen.

@@ -27,6 +27,7 @@ jobs:
             --exclude='phpcs.xml.dist' \
             --exclude='node_modules' \
             --exclude='tests' \
+            --exclude='wiki' \
             ./ /tmp/release/$SLUG/
           cd /tmp/release && zip -qr $SLUG.zip $SLUG
 
