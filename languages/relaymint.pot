@@ -2,22 +2,22 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Relaymint 0.1.0\n"
-"Report-Msgid-Bugs-To: https://github.com/mrclksr2409/Relaymint/issues\n"
+"Project-Id-Version: Relaymint 0.4.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Relaymint\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-09T14:34:44+00:00\n"
+"POT-Creation-Date: 2026-10-10T12:01:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: relaymint\n"
 
 #. Plugin Name of the plugin
 #: relaymint.php
-#: includes/admin/class-relaymint-admin.php:51
-#: includes/admin/class-relaymint-admin.php:52
+#: includes/admin/class-relaymint-admin.php:62
+#: includes/admin/class-relaymint-admin.php:63
 msgid "Relaymint"
 msgstr ""
 
@@ -28,7 +28,7 @@ msgstr ""
 
 #. Description of the plugin
 #: relaymint.php
-msgid "Reliable SMTP delivery for WordPress with email logging, smart routing, background sending and rate limiting."
+msgid "Reliable email delivery for WordPress via SMTP or Microsoft 365 / Outlook, with email logging, smart routing, background sending and rate limiting."
 msgstr ""
 
 #. Author of the plugin
@@ -41,163 +41,198 @@ msgstr ""
 msgid "https://marcel-kaiser.de"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:59
-#: includes/admin/class-relaymint-admin.php:73
+#: includes/admin/class-relaymint-admin.php:70
+#: includes/admin/class-relaymint-admin.php:84
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:60
-#: includes/admin/class-relaymint-admin.php:135
+#: includes/admin/class-relaymint-admin.php:71
+#: includes/admin/class-relaymint-admin.php:199
 #: includes/admin/views/log-list.php:15
 #: includes/admin/views/settings-logs.php:21
 msgid "Email Log"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:61
+#: includes/admin/class-relaymint-admin.php:72
 msgid "Tools"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:92
+#: includes/admin/class-relaymint-admin.php:106
+#: includes/admin/views/connection-fields-microsoft.php:112
+#: includes/admin/views/log-list.php:30
+#: includes/admin/views/settings-connections.php:74
+#: includes/admin/views/tools.php:87
 msgid "Are you sure?"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:132
+#: includes/admin/class-relaymint-admin.php:159
+msgid "SMTP delivery, smart routing and email log"
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:196
 msgid "General"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:133
+#: includes/admin/class-relaymint-admin.php:197
 msgid "Additional Connections"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:134
-#: includes/admin/views/settings-routing.php:126
+#: includes/admin/class-relaymint-admin.php:198
+#: includes/admin/views/settings-routing.php:128
 msgid "Smart Routing"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:136
+#: includes/admin/class-relaymint-admin.php:200
 msgid "Misc"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:147
+#: includes/admin/class-relaymint-admin.php:211
+#: includes/admin/class-relaymint-admin.php:528
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:186
+#: includes/admin/class-relaymint-admin.php:250
 msgid "\"Do Not Send\" is enabled: no emails are sent from this site."
 msgstr ""
 
 #. translators: %s: site domain
-#: includes/admin/class-relaymint-admin.php:192
+#: includes/admin/class-relaymint-admin.php:256
 #, php-format
 msgid "Domain check: %s is not an allowed domain, the SMTP settings are not used."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:220
+#: includes/admin/class-relaymint-admin.php:284
 msgid "Relaymint Settings"
 msgstr ""
 
 #. translators: %d: number of entries
-#: includes/admin/class-relaymint-admin.php:250
+#: includes/admin/class-relaymint-admin.php:312
 #, php-format
 msgid "%d log entry deleted."
 msgid_plural "%d log entries deleted."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/class-relaymint-admin.php:385
+#: includes/admin/class-relaymint-admin.php:450
 msgid "Email rate limiting requires \"Optimize Email Sending\" and was not enabled."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:396
+#: includes/admin/class-relaymint-admin.php:471
 msgid "Unknown settings tab."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:399
+#: includes/admin/class-relaymint-admin.php:474
 msgid "Settings saved."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:411
+#: includes/admin/class-relaymint-admin.php:493
+msgid "Click \"Connect with Microsoft\" to sign in with the mailbox. Emails are not sent via Microsoft until the connection is authorized."
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:506
+msgid "Save the Microsoft client ID and client secret first."
+msgstr ""
+
+#. translators: %s: error message from Microsoft
+#: includes/admin/class-relaymint-admin.php:540
+#, php-format
+msgid "Microsoft sign-in was not completed: %s"
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:545
+msgid "Microsoft did not return an authorization code."
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:550
+msgid "Microsoft account connected. Send a test email to verify the connection."
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:563
+msgid "Microsoft account disconnected."
+msgstr ""
+
+#: includes/admin/class-relaymint-admin.php:575
 msgid "Connection deleted."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:427
+#: includes/admin/class-relaymint-admin.php:591
 msgid "Please enter a valid email address."
 msgstr ""
 
 #. translators: %s: site name
-#: includes/admin/class-relaymint-admin.php:445
+#: includes/admin/class-relaymint-admin.php:609
 #, php-format
 msgid "Relaymint: Test email from %s"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:446
+#: includes/admin/class-relaymint-admin.php:610
 msgid "Congratulations, Relaymint is configured correctly and this test email was delivered."
 msgstr ""
 
 #. translators: %s: connection name
-#: includes/admin/class-relaymint-admin.php:448
+#: includes/admin/class-relaymint-admin.php:612
 #, php-format
 msgid "Connection: %s"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:452
+#: includes/admin/class-relaymint-admin.php:616
 msgid "Relaymint test email"
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:481
+#: includes/admin/class-relaymint-admin.php:645
 msgid "Debug log cleared."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:494
+#: includes/admin/class-relaymint-admin.php:658
 msgid "This email cannot be resent because its content was not logged."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:512
+#: includes/admin/class-relaymint-admin.php:676
 msgid "Email resent."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:514
+#: includes/admin/class-relaymint-admin.php:678
 msgid "The email could not be resent. Check the email log for details."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:525
+#: includes/admin/class-relaymint-admin.php:689
 msgid "All log entries deleted."
 msgstr ""
 
-#: includes/admin/class-relaymint-admin.php:535
+#: includes/admin/class-relaymint-admin.php:699
 msgid "Queue processed."
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:42
-#: includes/admin/views/log-entry.php:31
+#: includes/admin/views/log-entry.php:41
 #: includes/class-relaymint-router.php:27
 msgid "Subject"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:43
-#: includes/admin/views/log-entry.php:33
+#: includes/admin/views/log-entry.php:43
 #: includes/class-relaymint-router.php:30
 msgid "To"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:44
-#: includes/admin/views/log-entry.php:29
+#: includes/admin/views/log-entry.php:57
 msgid "Status"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:45
-#: includes/admin/views/log-entry.php:37
-#: includes/admin/views/tools.php:63
+#: includes/admin/views/log-entry.php:47
+#: includes/admin/views/tools.php:58
 msgid "Connection"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:46
-#: includes/admin/views/log-entry.php:38
+#: includes/admin/views/log-entry.php:48
 msgid "Initiator"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:47
-#: includes/admin/views/log-entry.php:30
+#: includes/admin/views/log-entry.php:40
 msgid "Date"
 msgstr ""
 
@@ -223,12 +258,125 @@ msgid "View"
 msgstr ""
 
 #: includes/admin/class-relaymint-log-list-table.php:193
-#: includes/admin/views/log-entry.php:83
+#: includes/admin/views/log-entry.php:23
 msgid "Resend"
 msgstr ""
 
-#: includes/admin/class-relaymint-log-list-table.php:224
+#: includes/admin/class-relaymint-log-list-table.php:222
 msgid "PHP mail()"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:26
+#: includes/class-relaymint-connections.php:49
+#: includes/class-relaymint-connections.php:191
+msgid "Microsoft 365 / Outlook"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:28
+msgid "Register an app in the Microsoft Entra admin center (App registrations), add the redirect URI below as platform \"Web\", create a client secret and grant the Microsoft Graph permission Mail.Send."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:32
+msgid "Redirect URI"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:36
+msgid "Microsoft only accepts HTTPS redirect URIs (except for localhost). Enable HTTPS for the WordPress admin to sign in."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:38
+msgid "Only needed for \"Sign in with the mailbox\"."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:43
+#: includes/admin/views/connection-fields.php:121
+msgid "Authentication"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:46
+msgid "Sign in with the mailbox (delegated permission)"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:47
+msgid "Works with Microsoft 365 work or school accounts and personal Outlook.com accounts. Required permissions: Mail.Send, User.Read and offline_access (delegated)."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:48
+msgid "App-only (application permission)"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:49
+msgid "Microsoft 365 only, no sign-in needed. Required permission: Mail.Send (application) with admin consent. Emails are sent from the From Email mailbox; restrict the app with an Exchange application access policy."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:54
+msgid "Directory (tenant) ID"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:58
+msgid "Tenant ID or domain (e.g. contoso.onmicrosoft.com). For \"Sign in with the mailbox\" you can also use \"common\" (any account), \"organizations\" or \"consumers\" (Outlook.com). App-only requires your tenant ID."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:62
+msgid "Application (client) ID"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:69
+msgid "Client Secret"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:76
+msgid "The secret value (not the secret ID). Client secrets expire; create a new one in time."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:78
+msgid "A client secret is stored (encrypted). Leave empty to keep it."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:79
+msgid "Remove the stored client secret"
+msgstr ""
+
+#. translators: %s: constant name
+#: includes/admin/views/connection-fields-microsoft.php:87
+#, php-format
+msgid "Tip: define %s in wp-config.php to keep the client secret out of the database."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:98
+msgid "Microsoft Account"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:101
+msgid "Save the connection first, then sign in with the mailbox."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:107
+msgid "Connected"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:111
+msgid "Reconnect"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:112
+msgid "Disconnect"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:115
+msgid "Not connected"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:117
+msgid "Connect with Microsoft"
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:119
+msgid "Select Microsoft 365 / Outlook, enter the client ID and secret and save the connection, then sign in with the mailbox."
+msgstr ""
+
+#: includes/admin/views/connection-fields-microsoft.php:122
+msgid "Save your changes before connecting. Leave the From Email empty to send as the signed-in mailbox; other addresses need \"Send As\" permission in Exchange."
 msgstr ""
 
 #. translators: %s: constant name
@@ -237,192 +385,200 @@ msgstr ""
 msgid "Defined by the constant %s in wp-config.php."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:31
+#: includes/admin/views/connection-fields.php:32
+msgid "Mailer"
+msgstr ""
+
+#: includes/admin/views/connection-fields.php:35
+#: includes/admin/views/settings-routing.php:73
+msgid "Send via"
+msgstr ""
+
+#: includes/admin/views/connection-fields.php:43
+msgid "SMTP works with any provider. Microsoft 365 / Outlook sends through the Microsoft Graph API with OAuth 2.0 and does not need SMTP AUTH or a mailbox password."
+msgstr ""
+
+#: includes/admin/views/connection-fields.php:48
 msgid "Sender"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:34
+#: includes/admin/views/connection-fields.php:51
 #: includes/admin/views/settings-connections.php:55
 msgid "From Email"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:38
+#: includes/admin/views/connection-fields.php:55
 msgid "The email address emails are sent from. Most SMTP providers require an address of the authenticated account or domain."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:39
+#: includes/admin/views/connection-fields.php:56
 msgid "Force From Email"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:40
+#: includes/admin/views/connection-fields.php:57
 msgid "Use this address for every email, even if a plugin sets a different one. Otherwise it only replaces the WordPress default address."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:44
+#: includes/admin/views/connection-fields.php:61
 msgid "From Name"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:48
+#: includes/admin/views/connection-fields.php:65
 msgid "Force From Name"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:52
+#: includes/admin/views/connection-fields.php:69
 msgid "Return Path"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:54
+#: includes/admin/views/connection-fields.php:71
 msgid "Set the return path to match the From Email"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:55
+#: includes/admin/views/connection-fields.php:72
 msgid "Bounce notifications are then sent to the From Email address."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:60
+#: includes/admin/views/connection-fields.php:78
 msgid "SMTP Server"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:63
-#: includes/admin/views/settings-connections.php:56
+#: includes/admin/views/connection-fields.php:81
 msgid "SMTP Host"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:70
+#: includes/admin/views/connection-fields.php:88
 msgid "Encryption"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:75
+#: includes/admin/views/connection-fields.php:93
 msgid "None"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:76
+#: includes/admin/views/connection-fields.php:94
 msgid "SSL"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:77
+#: includes/admin/views/connection-fields.php:95
 msgid "TLS"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:85
+#: includes/admin/views/connection-fields.php:103
 msgid "TLS (STARTTLS) is recommended for port 587, SSL for port 465."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:89
+#: includes/admin/views/connection-fields.php:107
 msgid "SMTP Port"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:96
+#: includes/admin/views/connection-fields.php:114
 msgid "Auto TLS"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:98
+#: includes/admin/views/connection-fields.php:116
 msgid "Use TLS automatically if the server supports it"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:99
+#: includes/admin/views/connection-fields.php:117
 msgid "Only relevant when encryption is set to \"None\". Disable it if your server advertises TLS but fails to use it."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:103
-msgid "Authentication"
-msgstr ""
-
-#: includes/admin/views/connection-fields.php:105
+#: includes/admin/views/connection-fields.php:123
 msgid "Use SMTP authentication"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:109
+#: includes/admin/views/connection-fields.php:127
 msgid "SMTP Username"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:116
+#: includes/admin/views/connection-fields.php:134
 msgid "SMTP Password"
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:124
+#: includes/admin/views/connection-fields.php:142
 msgid "A password is stored (encrypted). Leave empty to keep it."
 msgstr ""
 
-#: includes/admin/views/connection-fields.php:125
+#: includes/admin/views/connection-fields.php:143
 msgid "Remove the stored password"
 msgstr ""
 
 #. translators: %s: constant name
-#: includes/admin/views/connection-fields.php:133
+#: includes/admin/views/connection-fields.php:151
 #, php-format
 msgid "Tip: define %s in wp-config.php to keep the password out of the database."
 msgstr ""
 
 #: includes/admin/views/log-entry.php:17
-msgid "Email Details"
-msgstr ""
-
-#: includes/admin/views/log-entry.php:18
 msgid "Back to the email log"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:21
+#: includes/admin/views/log-entry.php:30
+msgid "Email Details"
+msgstr ""
+
+#: includes/admin/views/log-entry.php:33
 msgid "Log entry not found."
 msgstr ""
 
-#: includes/admin/views/log-entry.php:32
+#: includes/admin/views/log-entry.php:42
 #: includes/class-relaymint-router.php:29
 msgid "From"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:34
+#: includes/admin/views/log-entry.php:44
 #: includes/class-relaymint-router.php:31
 msgid "CC"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:35
+#: includes/admin/views/log-entry.php:45
 #: includes/class-relaymint-router.php:32
 msgid "BCC"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:36
+#: includes/admin/views/log-entry.php:46
 #: includes/class-relaymint-router.php:33
 msgid "Reply-To"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:39
+#: includes/admin/views/log-entry.php:49
 msgid "File"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:40
+#: includes/admin/views/log-entry.php:50
 msgid "Attachments"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:59
+#: includes/admin/views/log-entry.php:69
 msgid "Error"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:67
+#: includes/admin/views/log-entry.php:77
 msgid "Headers"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:71
+#: includes/admin/views/log-entry.php:82
 #: includes/class-relaymint-router.php:28
 msgid "Message"
 msgstr ""
 
-#: includes/admin/views/log-entry.php:73
+#: includes/admin/views/log-entry.php:84
 msgid "The message content was not logged. Enable \"Log Email Content\" in the settings to store it."
 msgstr ""
 
-#: includes/admin/views/log-list.php:17
-msgid "Delete all"
-msgstr ""
-
-#: includes/admin/views/log-list.php:24
+#: includes/admin/views/log-list.php:20
 msgid "The email log is disabled."
 msgstr ""
 
-#: includes/admin/views/log-list.php:25
+#: includes/admin/views/log-list.php:21
 msgid "Enable it"
 msgstr ""
 
-#: includes/admin/views/log-list.php:40
+#: includes/admin/views/log-list.php:30
+msgid "Delete all"
+msgstr ""
+
+#: includes/admin/views/log-list.php:43
 msgid "Search emails"
 msgstr ""
 
@@ -448,11 +604,15 @@ msgid "Back"
 msgstr ""
 
 #: includes/admin/views/settings-connections.php:48
-msgid "Additional connections can be used by Smart Routing to send specific emails through a different SMTP account."
+msgid "Additional connections can be used by Smart Routing to send specific emails through a different SMTP account or Microsoft 365 / Outlook mailbox."
 msgstr ""
 
 #: includes/admin/views/settings-connections.php:54
 msgid "Name"
+msgstr ""
+
+#: includes/admin/views/settings-connections.php:56
+msgid "Sent via"
 msgstr ""
 
 #: includes/admin/views/settings-connections.php:57
@@ -547,115 +707,131 @@ msgstr ""
 msgid "Only use the SMTP settings when the site runs on one of the allowed domains. Useful for staging copies or migrated sites."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:28
+#: includes/admin/views/settings-misc.php:29
 msgid "Allowed domains (comma separated)"
 msgstr ""
 
 #. translators: %s: site domain
-#: includes/admin/views/settings-misc.php:36
+#: includes/admin/views/settings-misc.php:37
 #, php-format
 msgid "Current site domain: %s"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:42
+#: includes/admin/views/settings-misc.php:43
 msgid "Block all emails when the domain does not match"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:43
+#: includes/admin/views/settings-misc.php:44
 msgid "Without this option, emails are sent with the default PHP mailer instead of SMTP on non-matching domains."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:48
+#: includes/admin/views/settings-misc.php:50
 msgid "Do Not Send"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:50
+#: includes/admin/views/settings-misc.php:52
 msgid "Stop sending all emails"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:51
+#: includes/admin/views/settings-misc.php:53
 msgid "No emails are sent from this site. Blocked emails still appear in the email log. Useful for development and staging sites."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:55
+#: includes/admin/views/settings-misc.php:57
 msgid "Allow Insecure SSL Certificates"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:57
+#: includes/admin/views/settings-misc.php:59
 msgid "Allow self-signed or invalid SSL certificates"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:58
+#: includes/admin/views/settings-misc.php:60
 msgid "Disables certificate verification for the SMTP connection. Only enable this if your server uses a self-signed certificate — it makes the connection vulnerable to interception."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:62
+#: includes/admin/views/settings-misc.php:64
 #: includes/admin/views/tools.php:80
 msgid "Debug Log"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:64
+#: includes/admin/views/settings-misc.php:66
 msgid "Enable debug log"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:66
+#: includes/admin/views/settings-misc.php:68
 msgid "Records the SMTP conversation of every email (credentials are masked). Errors are always recorded."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:67
+#: includes/admin/views/settings-misc.php:69
 msgid "View debug log"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:72
+#: includes/admin/views/settings-misc.php:74
 msgid "Optimize Email Sending"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:74
+#: includes/admin/views/settings-misc.php:76
 msgid "Send emails in the background"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:75
+#: includes/admin/views/settings-misc.php:77
 msgid "Emails are queued and sent asynchronously via Action Scheduler, so pages that send emails load faster."
 msgstr ""
 
 #. translators: %d: number of emails
-#: includes/admin/views/settings-misc.php:82
+#: includes/admin/views/settings-misc.php:84
 #, php-format
 msgid "%d email is waiting in the queue."
 msgid_plural "%d emails are waiting in the queue."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/views/settings-misc.php:87
+#: includes/admin/views/settings-misc.php:89
 msgid "Process queue now"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:93
+#: includes/admin/views/settings-misc.php:95
 msgid "Email Rate Limiting"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:95
+#: includes/admin/views/settings-misc.php:97
 msgid "Limit the number of emails sent"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:96
+#: includes/admin/views/settings-misc.php:98
 msgid "Emails above the limit stay in the queue and are sent as soon as the limit allows. Leave a field empty or 0 for no limit."
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:100
+#: includes/admin/views/settings-misc.php:103
 msgid "Per minute"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:101
+#: includes/admin/views/settings-misc.php:104
 msgid "Per hour"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:102
+#: includes/admin/views/settings-misc.php:105
 msgid "Per day"
 msgstr ""
 
-#: includes/admin/views/settings-misc.php:103
+#: includes/admin/views/settings-misc.php:106
 msgid "Per week"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php:121
+msgid "Update Channel"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php:124
+msgid "Stable (GitHub releases)"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php:125
+msgid "Beta (beta branch)"
+msgstr ""
+
+#: includes/admin/views/settings-misc.php:127
+msgid "The beta channel offers updates from the current state of the beta branch. These versions may be unstable — do not use it on production sites. Switching back to stable does not downgrade: the next stable release is installed once its version is higher."
 msgstr ""
 
 #: includes/admin/views/settings-routing.php:25
@@ -686,10 +862,6 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:73
-msgid "Send via"
-msgstr ""
-
 #: includes/admin/views/settings-routing.php:81
 msgid "Move up"
 msgstr ""
@@ -702,31 +874,31 @@ msgstr ""
 msgid "Remove route"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:86
+#: includes/admin/views/settings-routing.php:87
 msgid "if the following conditions match:"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:94
+#: includes/admin/views/settings-routing.php:95
 msgid "+ Add condition group (or)"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:105
+#: includes/admin/views/settings-routing.php:107
 msgid "Send emails through different connections based on conditions. Routes are checked from top to bottom; the first matching route wins. Emails that match no route use the primary connection."
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:110
+#: includes/admin/views/settings-routing.php:112
 msgid "Smart Routing needs at least one additional connection."
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:111
+#: includes/admin/views/settings-routing.php:113
 msgid "Add a connection"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:127
+#: includes/admin/views/settings-routing.php:129
 msgid "Enable Smart Routing"
 msgstr ""
 
-#: includes/admin/views/settings-routing.php:139
+#: includes/admin/views/settings-routing.php:141
 msgid "+ Add route"
 msgstr ""
 
@@ -739,48 +911,53 @@ msgid "Send a Test Email"
 msgstr ""
 
 #. translators: %s: email address
-#: includes/admin/views/tools.php:31
+#: includes/admin/views/tools.php:29
 #, php-format
 msgid "The test email was sent to %s."
 msgstr ""
 
-#: includes/admin/views/tools.php:40
+#: includes/admin/views/tools.php:35
+#: includes/admin/views/tools.php:37
 msgid "The test email could not be sent."
 msgstr ""
 
-#: includes/admin/views/tools.php:48
-msgid "SMTP debug output"
+#: includes/admin/views/tools.php:43
+msgid "Debug output"
 msgstr ""
 
-#: includes/admin/views/tools.php:59
+#: includes/admin/views/tools.php:54
 msgid "Send To"
 msgstr ""
 
-#: includes/admin/views/tools.php:73
+#: includes/admin/views/tools.php:68
 msgid "HTML"
 msgstr ""
 
-#: includes/admin/views/tools.php:74
+#: includes/admin/views/tools.php:69
 msgid "Send as HTML"
 msgstr ""
 
-#: includes/admin/views/tools.php:77
+#: includes/admin/views/tools.php:72
 msgid "Send Test Email"
 msgstr ""
 
-#: includes/admin/views/tools.php:83
+#: includes/admin/views/tools.php:82
 msgid "Only errors are recorded. Enable the debug log in the Misc settings to record the full SMTP conversation."
 msgstr ""
 
-#: includes/admin/views/tools.php:88
-msgid "The debug log is empty."
-msgstr ""
-
-#: includes/admin/views/tools.php:91
+#: includes/admin/views/tools.php:87
 msgid "Clear debug log"
 msgstr ""
 
-#: includes/class-relaymint-connections.php:142
+#: includes/admin/views/tools.php:93
+msgid "The debug log is empty."
+msgstr ""
+
+#: includes/class-relaymint-connections.php:48
+msgid "SMTP"
+msgstr ""
+
+#: includes/class-relaymint-connections.php:208
 msgid "Primary connection"
 msgstr ""
 
@@ -816,6 +993,34 @@ msgstr ""
 
 #: includes/class-relaymint-logger.php:154
 msgid "Unknown error"
+msgstr ""
+
+#: includes/class-relaymint-microsoft.php:256
+msgid "Microsoft did not return a refresh token. Make sure the app may request the offline_access permission."
+msgstr ""
+
+#. translators: 1: error code, 2: error message
+#: includes/class-relaymint-microsoft.php:326
+#, php-format
+msgid "Microsoft sign-in failed (%1$s): %2$s"
+msgstr ""
+
+#: includes/class-relaymint-microsoft.php:369
+msgid "The Microsoft connection is not authorized. Open the connection settings and click \"Connect with Microsoft\"."
+msgstr ""
+
+#: includes/class-relaymint-microsoft.php:411
+msgid "A valid From Email is required to send via the Microsoft Graph application permission."
+msgstr ""
+
+#. translators: 1: error code, 2: error message
+#: includes/class-relaymint-microsoft.php:462
+#, php-format
+msgid "Microsoft Graph rejected the email (%1$s): %2$s"
+msgstr ""
+
+#: includes/class-relaymint-phpmailer.php:43
+msgid "No Microsoft connection configured."
 msgstr ""
 
 #: includes/class-relaymint-queue.php:105
@@ -866,24 +1071,4 @@ msgstr ""
 #: includes/class-relaymint-router.php:281
 #, php-format
 msgid "The regular expression %s is invalid and was skipped."
-msgstr ""
-
-#: includes/admin/class-relaymint-admin.php:145
-msgid "SMTP delivery, smart routing and email log"
-msgstr ""
-
-#: includes/admin/views/settings-misc.php
-msgid "Update Channel"
-msgstr ""
-
-#: includes/admin/views/settings-misc.php
-msgid "Stable (GitHub releases)"
-msgstr ""
-
-#: includes/admin/views/settings-misc.php
-msgid "Beta (beta branch)"
-msgstr ""
-
-#: includes/admin/views/settings-misc.php
-msgid "The beta channel offers updates from the current state of the beta branch. These versions may be unstable — do not use it on production sites. Switching back to stable does not downgrade: the next stable release is installed once its version is higher."
 msgstr ""

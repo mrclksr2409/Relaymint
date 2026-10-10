@@ -45,7 +45,7 @@ if ( $relaymint_editing ) :
 	return;
 endif;
 ?>
-<p><?php esc_html_e( 'Additional connections can be used by Smart Routing to send specific emails through a different SMTP account.', 'relaymint' ); ?></p>
+<p><?php esc_html_e( 'Additional connections can be used by Smart Routing to send specific emails through a different SMTP account or Microsoft 365 / Outlook mailbox.', 'relaymint' ); ?></p>
 <p><a class="button button-primary" href="<?php echo esc_url( Relaymint_Admin::connection_url( 'new' ) ); ?>"><?php esc_html_e( 'Add Connection', 'relaymint' ); ?></a></p>
 
 <table class="widefat striped relaymint-connections">
@@ -53,7 +53,7 @@ endif;
 		<tr>
 			<th><?php esc_html_e( 'Name', 'relaymint' ); ?></th>
 			<th><?php esc_html_e( 'From Email', 'relaymint' ); ?></th>
-			<th><?php esc_html_e( 'SMTP Host', 'relaymint' ); ?></th>
+			<th><?php esc_html_e( 'Sent via', 'relaymint' ); ?></th>
 			<th><?php esc_html_e( 'Connection ID', 'relaymint' ); ?></th>
 			<th><?php esc_html_e( 'Actions', 'relaymint' ); ?></th>
 		</tr>
@@ -66,7 +66,7 @@ endif;
 			<tr>
 				<td><strong><a href="<?php echo esc_url( Relaymint_Admin::connection_url( $relaymint_cid ) ); ?>"><?php echo esc_html( $relaymint_conn['name'] ); ?></a></strong></td>
 				<td><?php echo esc_html( $relaymint_conn['from_email'] ); ?></td>
-				<td><?php echo esc_html( $relaymint_conn['host'] . ':' . $relaymint_conn['port'] ); ?></td>
+				<td><?php echo esc_html( Relaymint_Connections::summary( $relaymint_conn ) ); ?></td>
 				<td><code><?php echo esc_html( $relaymint_cid ); ?></code></td>
 				<td>
 					<a href="<?php echo esc_url( Relaymint_Admin::connection_url( $relaymint_cid ) ); ?>"><?php esc_html_e( 'Edit', 'relaymint' ); ?></a>

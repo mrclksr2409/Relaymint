@@ -14,6 +14,7 @@ global $wpdb;
 delete_option( 'relaymint_settings' );
 delete_option( 'relaymint_db_version' );
 delete_option( 'relaymint_debug_log' );
+delete_option( 'relaymint_oauth' );
 delete_transient( 'relaymint_cleanup_scheduled' );
 
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange

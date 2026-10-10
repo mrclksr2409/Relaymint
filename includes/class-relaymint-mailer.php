@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Configures PHPMailer for SMTP with the connection chosen by the interceptor.
+ * Configures PHPMailer for the connection chosen by the interceptor (SMTP or Microsoft Graph).
  */
 class Relaymint_Mailer {
 
@@ -29,11 +29,18 @@ class Relaymint_Mailer {
 	public static $force_debug = false;
 
 	/**
-	 * SMTP transcript of the current email.
+	 * SMTP transcript (or Microsoft Graph request log) of the current email.
 	 *
 	 * @var string
 	 */
 	public static $transcript = '';
+
+	/**
+	 * Whether the transcript of the current email is recorded.
+	 *
+	 * @var bool
+	 */
+	private static $capture = false;
 
 	/**
 	 * Register hooks.
@@ -47,12 +54,66 @@ class Relaymint_Mailer {
 	}
 
 	/**
+	 * Select the connection for the next wp_mail() call (null = leave PHPMailer untouched).
+	 *
+	 * Must run before wp_mail() creates PHPMailer, i.e. from pre_wp_mail.
+	 *
+	 * @param string|null $connection_id Connection ID.
+	 */
+	public static function prepare( $connection_id ) {
+		self::$connection_id = $connection_id ? (string) $connection_id : null;
+
+		$connection = self::current_connection();
+		if ( $connection && Relaymint_Connections::MAILER_MICROSOFT === $connection['mailer'] ) {
+			self::install_phpmailer();
+		}
+	}
+
+	/**
+	 * Replace the global PHPMailer instance with Relaymint_PHPMailer (adds the Graph transport).
+	 *
+	 * WordPress reuses any existing PHPMailer instance in wp_mail() and resets it for every email,
+	 * so the replacement also keeps working for SMTP connections.
+	 */
+	private static function install_phpmailer() {
+		global $phpmailer;
+
+		if ( $phpmailer instanceof Relaymint_PHPMailer ) {
+			return;
+		}
+
+		require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+		require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+		require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+		require_once ABSPATH . WPINC . '/class-wp-phpmailer.php';
+		require_once RELAYMINT_DIR . 'includes/class-relaymint-phpmailer.php';
+
+		$phpmailer = new Relaymint_PHPMailer( true ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- intended, see method description.
+
+		$phpmailer::$validator = static function ( $email ) {
+			return (bool) is_email( $email );
+		};
+	}
+
+	/**
+	 * Append a line to the transcript of the current email (if it is recorded).
+	 *
+	 * @param string $line Line.
+	 */
+	public static function trace( $line ) {
+		if ( self::$capture ) {
+			self::$transcript .= rtrim( (string) $line ) . "\n";
+		}
+	}
+
+	/**
 	 * Configure PHPMailer.
 	 *
 	 * @param PHPMailer\PHPMailer\PHPMailer $phpmailer PHPMailer instance.
 	 */
 	public static function configure( $phpmailer ) {
 		self::$transcript = '';
+		self::$capture    = false;
 
 		// PHPMailer is reused between wp_mail() calls; reset what we may have set before.
 		$phpmailer->SMTPDebug   = 0; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
@@ -67,7 +128,24 @@ class Relaymint_Mailer {
 			return;
 		}
 
+		self::$capture = self::$force_debug || Relaymint_Debug_Log::is_enabled();
+
 		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		if ( Relaymint_Connections::MAILER_MICROSOFT === $connection['mailer'] ) {
+			if ( ! $phpmailer instanceof Relaymint_PHPMailer ) {
+				// Another plugin replaced PHPMailer after pre_wp_mail. Without recipients PHPMailer
+				// fails the email instead of silently falling back to mail().
+				$phpmailer->clearAllRecipients();
+				Relaymint_Debug_Log::add( 'Microsoft connection cannot be used: the PHPMailer instance was replaced by another plugin.', 'error' );
+				return;
+			}
+			$phpmailer->Mailer               = Relaymint_PHPMailer::GRAPH;
+			$phpmailer->relaymint_connection = $connection;
+			self::trace( sprintf( "Sending via Microsoft Graph (%s, connection '%s').", $connection['ms_auth'], $connection['id'] ) );
+			self::log_from( $phpmailer );
+			return;
+		}
+
 		$phpmailer->isSMTP();
 		$phpmailer->Host        = $connection['host'];
 		$phpmailer->Port        = $connection['port'];
@@ -94,13 +172,24 @@ class Relaymint_Mailer {
 			);
 		}
 
-		if ( self::$force_debug || Relaymint_Debug_Log::is_enabled() ) {
+		if ( self::$capture ) {
 			$phpmailer->SMTPDebug   = 3;
 			$phpmailer->Debugoutput = static function ( $line ) {
-				Relaymint_Mailer::$transcript .= rtrim( (string) $line ) . "\n";
+				Relaymint_Mailer::trace( $line );
 			};
 		}
+		// phpcs:enable
 
+		self::log_from( $phpmailer );
+	}
+
+	/**
+	 * Store the final sender in the log entry.
+	 *
+	 * @param PHPMailer\PHPMailer\PHPMailer $phpmailer PHPMailer instance.
+	 */
+	private static function log_from( $phpmailer ) {
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		if ( Relaymint_Logger::$current_id ) {
 			Relaymint_Logger::update(
 				Relaymint_Logger::$current_id,
@@ -169,7 +258,7 @@ class Relaymint_Mailer {
 	 */
 	public static function after_failed() {
 		if ( '' !== self::$transcript ) {
-			Relaymint_Debug_Log::add( "SMTP transcript (connection '" . self::$connection_id . "'):\n" . self::$transcript, 'error' );
+			Relaymint_Debug_Log::add( "Transcript (connection '" . self::$connection_id . "'):\n" . self::$transcript, 'error' );
 		}
 		self::$connection_id = null;
 	}

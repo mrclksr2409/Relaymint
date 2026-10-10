@@ -39,6 +39,10 @@ class Relaymint_Admin {
 		add_action( 'admin_post_relaymint_resend', array( $this, 'handle_resend' ) );
 		add_action( 'admin_post_relaymint_delete_logs', array( $this, 'handle_delete_logs' ) );
 		add_action( 'admin_post_relaymint_run_queue', array( $this, 'handle_run_queue' ) );
+		add_action( 'admin_post_relaymint_ms_connect', array( $this, 'handle_ms_connect' ) );
+		add_action( 'admin_post_relaymint_ms_disconnect', array( $this, 'handle_ms_disconnect' ) );
+		// Microsoft redirects back to the plain admin-post.php URL (no "action" parameter).
+		add_action( 'admin_post', array( $this, 'handle_ms_callback' ) );
 
 		add_action( 'admin_notices', array( $this, 'notices' ) );
 
@@ -130,6 +134,16 @@ class Relaymint_Admin {
 				'edit' => $id,
 			)
 		);
+	}
+
+	/**
+	 * URL of the settings screen that edits a connection (primary or additional).
+	 *
+	 * @param string $id Connection ID.
+	 * @return string
+	 */
+	public static function connection_edit_url( $id ) {
+		return Relaymint_Connections::PRIMARY === $id ? self::url( '', array( 'tab' => 'general' ) ) : self::connection_url( $id );
 	}
 
 	/**
@@ -371,6 +385,7 @@ class Relaymint_Admin {
 
 				$clean['name'] = 'Primary';
 				Relaymint_Connections::save( Relaymint_Connections::PRIMARY, $clean );
+				$this->ms_connect_hint( Relaymint_Connections::PRIMARY );
 				break;
 
 			case 'connections':
@@ -383,9 +398,10 @@ class Relaymint_Admin {
 				$existing = Relaymint_Connections::all();
 				$clean    = Relaymint_Connections::sanitize( $input, isset( $existing[ $id ] ) ? $existing[ $id ] : null );
 				if ( '' === $clean['name'] ) {
-					$clean['name'] = $clean['host'] ? $clean['host'] : $id;
+					$clean['name'] = Relaymint_Connections::MAILER_SMTP === $clean['mailer'] && $clean['host'] ? $clean['host'] : $id;
 				}
 				Relaymint_Connections::save( $id, $clean );
+				$this->ms_connect_hint( $id );
 				$args['edit'] = $id;
 				break;
 
@@ -457,6 +473,95 @@ class Relaymint_Admin {
 
 		add_settings_error( 'relaymint', 'saved', __( 'Settings saved.', 'relaymint' ), 'success' );
 		$this->redirect( self::url( '', $args ) );
+	}
+
+	/**
+	 * After saving: remind to sign in when a delegated Microsoft connection is not authorized yet.
+	 *
+	 * @param string $id Connection ID.
+	 */
+	private function ms_connect_hint( $id ) {
+		$connection = Relaymint_Connections::get( $id );
+		if (
+			$connection
+			&& Relaymint_Connections::MAILER_MICROSOFT === $connection['mailer']
+			&& Relaymint_Microsoft::AUTH_DELEGATED === $connection['ms_auth']
+			&& '' !== $connection['ms_client_id']
+			&& '' !== $connection['ms_client_secret']
+			&& ! Relaymint_Microsoft::is_authorized( $connection )
+		) {
+			add_settings_error( 'relaymint', 'ms_connect', __( 'Click "Connect with Microsoft" to sign in with the mailbox. Emails are not sent via Microsoft until the connection is authorized.', 'relaymint' ), 'info' );
+		}
+	}
+
+	/**
+	 * Start the Microsoft sign-in for a connection.
+	 */
+	public function handle_ms_connect() {
+		$id = isset( $_GET['id'] ) ? sanitize_key( wp_unslash( $_GET['id'] ) ) : '';
+		$this->verify( 'relaymint_ms_connect_' . $id );
+
+		$connection = Relaymint_Connections::get( $id );
+		if ( ! $connection || Relaymint_Connections::MAILER_MICROSOFT !== $connection['mailer'] || '' === $connection['ms_client_id'] || '' === $connection['ms_client_secret'] ) {
+			add_settings_error( 'relaymint', 'ms_connect', __( 'Save the Microsoft client ID and client secret first.', 'relaymint' ) );
+			$this->redirect( $connection ? self::connection_edit_url( $id ) : self::url() );
+		}
+
+		wp_redirect( Relaymint_Microsoft::authorize_url( $connection ) ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- external Microsoft login.
+		exit;
+	}
+
+	/**
+	 * Microsoft redirects back here after sign-in.
+	 *
+	 * Runs for every admin-post.php request without an action, so it only acts on a known state.
+	 */
+	public function handle_ms_callback() {
+		if ( empty( $_GET['state'] ) ) {
+			return;
+		}
+		$request = Relaymint_Microsoft::consume_state( sanitize_text_field( wp_unslash( $_GET['state'] ) ) );
+		if ( ! $request ) {
+			return;
+		}
+		if ( ! current_user_can( self::CAPABILITY ) || get_current_user_id() !== (int) $request['user'] ) {
+			wp_die( esc_html__( 'You are not allowed to do this.', 'relaymint' ), 403 );
+		}
+
+		$id         = (string) $request['connection'];
+		$connection = Relaymint_Connections::get( $id );
+		if ( ! $connection ) {
+			$this->redirect( self::url() );
+		}
+
+		if ( ! empty( $_GET['error'] ) ) {
+			$message = ! empty( $_GET['error_description'] ) ? sanitize_text_field( wp_unslash( $_GET['error_description'] ) ) : sanitize_text_field( wp_unslash( $_GET['error'] ) );
+			/* translators: %s: error message from Microsoft */
+			add_settings_error( 'relaymint', 'ms_callback', sprintf( __( 'Microsoft sign-in was not completed: %s', 'relaymint' ), $message ) );
+			$this->redirect( self::connection_edit_url( $id ) );
+		}
+
+		$code   = isset( $_GET['code'] ) ? sanitize_text_field( wp_unslash( $_GET['code'] ) ) : '';
+		$result = '' !== $code ? Relaymint_Microsoft::handle_code( $connection, $code, $request['verifier'] ) : new WP_Error( 'relaymint_ms_code', __( 'Microsoft did not return an authorization code.', 'relaymint' ) );
+
+		if ( is_wp_error( $result ) ) {
+			add_settings_error( 'relaymint', 'ms_callback', $result->get_error_message() );
+		} else {
+			add_settings_error( 'relaymint', 'ms_callback', __( 'Microsoft account connected. Send a test email to verify the connection.', 'relaymint' ), 'success' );
+		}
+		$this->redirect( self::connection_edit_url( $id ) );
+	}
+
+	/**
+	 * Remove the stored Microsoft tokens of a connection.
+	 */
+	public function handle_ms_disconnect() {
+		$id = isset( $_GET['id'] ) ? sanitize_key( wp_unslash( $_GET['id'] ) ) : '';
+		$this->verify( 'relaymint_ms_disconnect_' . $id );
+
+		Relaymint_Microsoft::forget( $id );
+		add_settings_error( 'relaymint', 'ms_disconnect', __( 'Microsoft account disconnected.', 'relaymint' ), 'success' );
+		$this->redirect( Relaymint_Connections::exists( $id ) ? self::connection_edit_url( $id ) : self::url() );
 	}
 
 	/**

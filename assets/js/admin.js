@@ -37,9 +37,32 @@
 		} );
 	}
 
-	/* Connection form: port suggestions and auth/auto TLS rows. */
+	/* Connection form: mailer sections, port suggestions and auth/auto TLS rows. */
 	function initConnectionForms() {
 		document.querySelectorAll( '.relaymint-connection-form' ).forEach( function ( form ) {
+			var updateMailer = function () {
+				var checked = form.querySelector( 'input[name="connection[mailer]"]:checked' );
+				var mailer = checked ? checked.value : 'smtp';
+				form.querySelectorAll( '.relaymint-mailer-section' ).forEach( function ( section ) {
+					section.hidden = section.dataset.mailer !== mailer;
+				} );
+			};
+			form.querySelectorAll( 'input[name="connection[mailer]"]' ).forEach( function ( radio ) {
+				radio.addEventListener( 'change', updateMailer );
+			} );
+			updateMailer();
+
+			var updateMsAuth = function () {
+				var checked = form.querySelector( 'input[name="connection[ms_auth]"]:checked' );
+				form.querySelectorAll( '.relaymint-ms-delegated-row' ).forEach( function ( row ) {
+					row.hidden = ! checked || 'delegated' !== checked.value;
+				} );
+			};
+			form.querySelectorAll( 'input[name="connection[ms_auth]"]' ).forEach( function ( radio ) {
+				radio.addEventListener( 'change', updateMsAuth );
+			} );
+			updateMsAuth();
+
 			var port = form.querySelector( 'input[name="connection[port]"]' );
 			var auth = form.querySelector( '.relaymint-auth-toggle' );
 			var autotlsRow = form.querySelector( '.relaymint-autotls-row' );

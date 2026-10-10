@@ -110,7 +110,7 @@ class Relaymint_Interceptor {
 		 */
 		do_action( 'relaymint_before_send', $mail, $connection );
 
-		Relaymint_Mailer::$connection_id = '' !== $connection ? $connection : null;
+		Relaymint_Mailer::prepare( '' !== $connection ? $connection : null );
 
 		if ( $log_id ) {
 			Relaymint_Logger::update(

@@ -1,6 +1,6 @@
 <?php
 /**
- * Form fields of an SMTP connection.
+ * Form fields of a connection (SMTP or Microsoft 365 / Outlook).
  *
  * @package Relaymint
  *
@@ -27,7 +27,24 @@ $relaymint_lock_note = static function ( $field ) use ( $id ) {
 	}
 };
 $relaymint_has_pass  = '' !== $connection['pass'] || $relaymint_locked( 'pass' );
+$relaymint_mailer    = '' !== $id && Relaymint_Connections::is_overridden( $id, 'mailer' ) ? constant( Relaymint_Connections::constant_name( $id, 'mailer' ) ) : $connection['mailer'];
 ?>
+<h2><?php esc_html_e( 'Mailer', 'relaymint' ); ?></h2>
+<table class="form-table" role="presentation">
+	<tr>
+		<th scope="row"><?php esc_html_e( 'Send via', 'relaymint' ); ?></th>
+		<td>
+			<fieldset class="relaymint-mailer">
+				<?php foreach ( Relaymint_Connections::mailers() as $relaymint_value => $relaymint_label ) : ?>
+					<label><input type="radio" name="connection[mailer]" value="<?php echo esc_attr( $relaymint_value ); ?>" <?php checked( $relaymint_mailer, $relaymint_value ); ?> <?php disabled( $relaymint_locked( 'mailer' ) ); ?> /> <?php echo esc_html( $relaymint_label ); ?></label>&nbsp;&nbsp;
+				<?php endforeach; ?>
+			</fieldset>
+			<?php $relaymint_lock_note( 'mailer' ); ?>
+			<p class="description"><?php esc_html_e( 'SMTP works with any provider. Microsoft 365 / Outlook sends through the Microsoft Graph API with OAuth 2.0 and does not need SMTP AUTH or a mailbox password.', 'relaymint' ); ?></p>
+		</td>
+	</tr>
+</table>
+
 <h2><?php esc_html_e( 'Sender', 'relaymint' ); ?></h2>
 <table class="form-table" role="presentation">
 	<tr>
@@ -57,6 +74,7 @@ $relaymint_has_pass  = '' !== $connection['pass'] || $relaymint_locked( 'pass' )
 	</tr>
 </table>
 
+<div class="relaymint-mailer-section" data-mailer="<?php echo esc_attr( Relaymint_Connections::MAILER_SMTP ); ?>">
 <h2><?php esc_html_e( 'SMTP Server', 'relaymint' ); ?></h2>
 <table class="form-table" role="presentation">
 	<tr>
@@ -141,3 +159,8 @@ $relaymint_has_pass  = '' !== $connection['pass'] || $relaymint_locked( 'pass' )
 		</td>
 	</tr>
 </table>
+</div>
+
+<div class="relaymint-mailer-section" data-mailer="<?php echo esc_attr( Relaymint_Connections::MAILER_MICROSOFT ); ?>">
+	<?php require __DIR__ . '/connection-fields-microsoft.php'; ?>
+</div>

@@ -40,7 +40,7 @@ $relaymint_user        = wp_get_current_user();
 		?>
 		<?php if ( '' !== $test_result['transcript'] ) : ?>
 			<details <?php echo $test_result['success'] ? '' : 'open'; ?>>
-				<summary><?php esc_html_e( 'SMTP debug output', 'relaymint' ); ?></summary>
+				<summary><?php esc_html_e( 'Debug output', 'relaymint' ); ?></summary>
 				<pre class="wpb-code"><?php echo esc_html( $test_result['transcript'] ); ?></pre>
 			</details>
 		<?php endif; ?>

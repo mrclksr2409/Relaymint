@@ -24,13 +24,14 @@ class Relaymint_Options {
 	private static $cache = null;
 
 	/**
-	 * Default values for a single SMTP connection.
+	 * Default values for a single connection (SMTP or Microsoft 365 / Outlook).
 	 *
 	 * @return array
 	 */
 	public static function connection_defaults() {
 		return array(
 			'name'             => '',
+			'mailer'           => 'smtp',
 			'from_email'       => '',
 			'from_name'        => '',
 			'force_from_email' => true,
@@ -43,6 +44,10 @@ class Relaymint_Options {
 			'auth'             => true,
 			'user'             => '',
 			'pass'             => '',
+			'ms_auth'          => 'delegated',
+			'ms_tenant'        => 'common',
+			'ms_client_id'     => '',
+			'ms_client_secret' => '',
 		);
 	}
 
