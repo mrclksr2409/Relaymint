@@ -7,7 +7,7 @@
  * Requires at least: 6.9
  * Requires PHP:      7.4
  * Author:            Marcel Kaiser
- * Author URI:        https://marcel-kaiser.de
+ * Author URI:        https://github.com/mrclksr2409
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       relaymint

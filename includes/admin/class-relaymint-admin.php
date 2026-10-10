@@ -31,6 +31,7 @@ class Relaymint_Admin {
 		add_action( 'admin_menu', array( $this, 'register_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( RELAYMINT_FILE ), array( $this, 'action_links' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'row_meta' ), 10, 2 );
 
 		add_action( 'admin_post_relaymint_save', array( $this, 'handle_save' ) );
 		add_action( 'admin_post_relaymint_delete_connection', array( $this, 'handle_delete_connection' ) );
@@ -82,6 +83,20 @@ class Relaymint_Admin {
 	 */
 	public function action_links( $links ) {
 		array_unshift( $links, '<a href="' . esc_url( self::url() ) . '">' . esc_html__( 'Settings', 'relaymint' ) . '</a>' );
+		return $links;
+	}
+
+	/**
+	 * Wiki link in the plugin row meta (Plugins screen).
+	 *
+	 * @param array  $links Existing row meta links.
+	 * @param string $file  Plugin basename of the row.
+	 * @return array
+	 */
+	public function row_meta( $links, $file ) {
+		if ( plugin_basename( RELAYMINT_FILE ) === $file ) {
+			$links[] = '<a href="' . esc_url( 'https://github.com/mrclksr2409/Relaymint/wiki' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Wiki', 'relaymint' ) . '</a>';
+		}
 		return $links;
 	}
 
