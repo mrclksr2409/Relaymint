@@ -12,7 +12,7 @@
 | HTTPS im Adminbereich | – | Nur für Microsoft mit „Mit dem Postfach anmelden“ – Microsoft akzeptiert nur HTTPS-Umleitungs-URIs (außer `localhost`) |
 
 Mitgeliefert, nichts zu installieren: [Action Scheduler](https://actionscheduler.org/) 4.2.0,
-[Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 5.6 und
+[Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 5.7 und
 WP-Backend UI 1.0.2 (gemeinsames Admin-Design).
 
 ## Plugin installieren

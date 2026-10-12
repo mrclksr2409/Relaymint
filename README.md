@@ -34,7 +34,7 @@ Relaymint replaces the default PHP `mail()` transport of WordPress with an authe
 - WordPress 6.9 or higher (required by the bundled Action Scheduler 4.2)
 - PHP 7.4 or higher with the OpenSSL extension
 - An SMTP account (any provider) or a Microsoft 365 / Outlook.com mailbox with an app registration in Microsoft Entra ID
-- Bundled, nothing to install: [Action Scheduler](https://actionscheduler.org/) 4.2.0, [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 5.6 and WP-Backend UI 1.0.2 (shared admin design system)
+- Bundled, nothing to install: [Action Scheduler](https://actionscheduler.org/) 4.2.0, [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 5.7 and WP-Backend UI 1.0.2 (shared admin design system)
 
 ## Installation
 
@@ -159,11 +159,16 @@ wp i18n make-pot . languages/relaymint.pot --exclude=libraries,plugin-update-che
 wp i18n make-mo languages/
 ```
 
-Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler 4.2.0), `libraries/wp-backend-ui/` (WP-Backend UI 1.0.2, shared admin design system) and `plugin-update-checker/` (PUC 5.6).
+Bundled libraries (do not edit): `libraries/action-scheduler/` (Action Scheduler 4.2.0), `libraries/wp-backend-ui/` (WP-Backend UI 1.0.2, shared admin design system) and `plugin-update-checker/` (PUC 5.7).
 
 To update WP-Backend UI, replace `libraries/wp-backend-ui/` with the new release (only `wp-backend-ui.php`, `includes/`, `assets/` and `README.md`). If several plugins bundle the library, the newest copy is loaded.
 
 ## Changelog
+
+### [0.4.2] — 2026-10-12
+
+#### Geändert
+- Plugin Update Checker auf v5.7 aktualisiert.
 
 ### [0.4.1] — 2026-10-10
 

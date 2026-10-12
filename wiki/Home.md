@@ -6,7 +6,7 @@ Standardversand über PHP `mail()` durch eine authentifizierte **SMTP-Verbindung
 und Themes tatsächlich im Posteingang ankommen. Jede E-Mail wird protokolliert, kann per Regeln über
 verschiedene Konten geroutet und optional im Hintergrund mit Ratenbegrenzung versendet werden.
 
-> Aktuelle Version: **0.4.1** · Voraussetzungen: WordPress 6.9+, PHP 7.4+ mit OpenSSL, ein
+> Aktuelle Version: **0.4.2** · Voraussetzungen: WordPress 6.9+, PHP 7.4+ mit OpenSSL, ein
 > SMTP-Konto **oder** ein Microsoft-365-/Outlook.com-Postfach mit App-Registrierung in Microsoft Entra ID
 
 ---

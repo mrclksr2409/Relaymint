@@ -57,7 +57,7 @@ relaymint/
 ├── languages/                        relaymint.pot, relaymint-de_DE.po/.mo
 ├── libraries/action-scheduler/       Action Scheduler 4.2.0 (nicht bearbeiten)
 ├── libraries/wp-backend-ui/          WP-Backend UI 1.0.2 (nicht bearbeiten)
-├── plugin-update-checker/            PUC 5.6 (nicht bearbeiten)
+├── plugin-update-checker/            PUC 5.7 (nicht bearbeiten)
 └── wiki/                             Quelle dieses Wikis
 ```
 

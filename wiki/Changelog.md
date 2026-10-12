@@ -2,6 +2,11 @@
 
 Die maßgebliche Fassung steht im [README](https://github.com/mrclksr2409/Relaymint#changelog).
 
+## 0.4.2 — 2026-10-12
+
+**Geändert**
+- Plugin Update Checker auf v5.7 aktualisiert.
+
 ## 0.4.1 — 2026-10-10
 
 **Geändert**

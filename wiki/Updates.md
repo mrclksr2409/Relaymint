@@ -1,7 +1,7 @@
 # Updates
 
 Relaymint aktualisiert sich über den
-[Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) (5.6, mitgeliefert)
+[Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) (5.7, mitgeliefert)
 direkt aus dem GitHub-Repository – wie ein Plugin aus dem offiziellen Verzeichnis. Updates
 erscheinen unter **Dashboard → Aktualisierungen** und in der Plugin-Liste und lassen sich mit einem
 Klick installieren (oder automatisch, wenn Auto-Updates für das Plugin aktiviert sind).
